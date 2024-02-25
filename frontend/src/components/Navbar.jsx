@@ -10,7 +10,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="flex justify-between items-center h-24 max-w-[1240px] mx-auto px-6 text-white">
+    <div className="flex justify-between items-center h-24 max-w-[1240px] mx-auto px-6 text-[#2774AE]">
       <h1 className="w-full text-3xl font-bold text-[#2774AE] m-4">
         BruinShare.
       </h1>
@@ -26,7 +26,7 @@ const Navbar = () => {
       <div
         className={
           !nav
-            ? "fixed left-0 top-0 w-[60%] h-full border-r border-r-transparent bg-gray-800 ease-in-out duration-700"
+            ? "fixed left-0 top-0 w-[60%] h-full border-r border-r-transparent bg-gray-200 ease-in-out duration-700"
             : "fixed left-[-100%]"
         }
       >
