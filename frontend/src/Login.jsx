@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Navbar from "./components/Navbar";
 
 function LoginPage() {
   const [email, setEmail] = useState("");
@@ -8,6 +9,7 @@ function LoginPage() {
 
   return (
     <>
+      <Navbar />
       <div className="login-credentials">
         <form className="email">
           {" "}
