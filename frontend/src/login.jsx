@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 
 function LoginPage() {
-  const [count, setCount] = useState(0);
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -36,7 +34,7 @@ function LoginPage() {
       </div>
       <h1>Log in to book a ride</h1>
       <div className="sign-in-button">
-        <button onClick={validateCredentials}>Sign In</button>
+        <button onClick={validateCredentials}>Log In</button>
       </div>
       <p className="sign-up">
         Don't have an account?{" "}
