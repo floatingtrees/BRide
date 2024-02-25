@@ -1,5 +1,6 @@
 import React from 'react'
 import Navbar from './components/Navbar';
+import SearchResult from './SearchResult.jsx';
 
 function LandingPage() {
     return (
@@ -7,6 +8,10 @@ function LandingPage() {
         <div>
             <Navbar/>
         </div>
+        <div>
+            <SearchResult/>
+        </div>
+
     </>);
 }
 

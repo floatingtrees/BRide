@@ -1,14 +1,8 @@
 import { useState } from 'react'
-import './App.css'
-
 
 function SearchResult() {
   const [count, setCount] = useState(0);
   const [info, setInfo] = useState([Array(3).fill(null)]);
-
-  //this is for temporary testing
-  
-  //
   
   function SearchElement(props) {
     return (
