@@ -8,10 +8,6 @@ function LandingPage() {
         <div>
             <Navbar/>
         </div>
-        <div>
-            <SearchResult/>
-        </div>
-
     </>);
 }
 
