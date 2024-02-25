@@ -16,14 +16,6 @@ function LoginPage() {
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
       <div className="login-credentials"> 
       <form className="email"> <label>
          Email: <input type="text" name="name" onChange={e => setEmail(e.target.value)}/> 
