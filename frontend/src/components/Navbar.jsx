@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { Navigate } from "react-router-dom";
 import { RiMenu4Line } from "react-icons/ri";
 import { MdClose } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [nav, setNav] = useState(true);
@@ -12,11 +14,15 @@ const Navbar = () => {
   return (
     <div className="flex justify-between items-center h-24 max-w-[1240px] mx-auto px-6 text-[#2774AE]">
       <h1 className="w-full text-3xl font-bold text-[#2774AE] m-4">
-        BruinShare.
+        <Link to="/">BRide.</Link>
       </h1>
       <ul className="hidden md:flex">
-        <li className="p-4">Home</li>
-        <li className="p-4">Search</li>
+        <li className="p-4">
+          <Link to="/">Home</Link>
+        </li>
+        <li className="p-4">
+          <Link to="/Search">Search</Link>
+        </li>
         <li className="p-4">About</li>
         <li className="p-4">Contact</li>
       </ul>
@@ -31,11 +37,15 @@ const Navbar = () => {
         }
       >
         <h1 className="w-full text-3xl font-bold text-[#2774AE] m-4">
-          BruinShare.
+          <Link to="/">BRide.</Link>
         </h1>
         <ul className="uppercase p-4">
-          <li className="p-4 border-b">Home</li>
-          <li className="p-4 border-b">Search</li>
+          <li className="p-4 border-b">
+            <Link to="/">Home</Link>
+          </li>
+          <li className="p-4 border-b">
+            <Link to="/Search">Search</Link>
+          </li>
           <li className="p-4 border-b">About</li>
           <li className="p-4">Contact</li>
         </ul>
