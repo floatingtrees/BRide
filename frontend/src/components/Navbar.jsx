@@ -25,6 +25,9 @@ const Navbar = () => {
         </li>
         <li className="p-4">About</li>
         <li className="p-4">Contact</li>
+        <button className="rounded-full bg-[#2774AE] text-white px-4 py-1">
+          Login
+        </button>
       </ul>
       <div onClick={handleNav} className="block md:hidden">
         {!nav ? <MdClose size={20} /> : <RiMenu4Line size={20} />}
