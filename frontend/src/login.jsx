@@ -10,7 +10,7 @@ function App() {
   const [password, setPassword] = useState("")
 
 
-  function validateCredentials(username, password) {
+  function validateCredentials(email, password) {
 
   }
 
@@ -25,8 +25,12 @@ function App() {
         </a>
       </div>
       <div className="login-credentials"> 
-      <form className="email"> <label> Email: <input type="text" name="name" /> </label>  </form>
-      <form className="email"> <label> Password: <input type="text" name="name" /> </label>  </form>
+      <form className="email"> <label>
+         Email: <input type="text" name="name" onChange={e => setEmail(e.target.value)}/> 
+         </label>  </form>
+      <form className="email"> <label> 
+      Password: <input type="text" name="password" onChange={e => setPassword(e.target.value)}/>
+      </label>  </form>
       </div>
       <h1>Log in to book a ride</h1>
       <div className="sign-in-button">
