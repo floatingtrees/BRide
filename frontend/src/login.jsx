@@ -1,10 +1,7 @@
 import React, { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 
 
 function LoginPage() {
-  const [count, setCount] = useState(0)
 
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
@@ -27,7 +24,7 @@ function LoginPage() {
       <h1>Log in to book a ride</h1>
       <div className="sign-in-button">
         <button onClick={validateCredentials}>
-          Sign In
+          Log In
         </button>
       </div>
       <p className="sign-up">
