@@ -21,7 +21,7 @@ const Navbar = () => {
           <Link to="/">Home</Link>
         </li>
         <li className="p-4">
-          <Link to="/Search">Search</Link>
+          <Link to="/search">Search</Link>
         </li>
         <li className="p-4">About</li>
         <li className="p-4">Contact</li>
@@ -47,10 +47,13 @@ const Navbar = () => {
             <Link to="/">Home</Link>
           </li>
           <li className="p-4 border-b">
-            <Link to="/Search">Search</Link>
+            <Link to="/search">Search</Link>
           </li>
           <li className="p-4 border-b">About</li>
           <li className="p-4">Contact</li>
+          <li className="p-4 border-b">
+            <Link to="/login">Login</Link>
+          </li>
         </ul>
       </div>
     </div>

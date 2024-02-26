@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Navbar from "./components/Navbar";
+import { Link } from "react-router-dom";
 
 function LoginPage() {
   const [email, setEmail] = useState("");
@@ -40,7 +41,7 @@ function LoginPage() {
       </div>
       <p className="sign-up">
         Don't have an account?{" "}
-        <a href="https://orteil.dashnet.org/cookieclicker/"> Sign up</a>
+        <Link to="/signup">Sign Up</Link>
       </p>
     </>
   );
