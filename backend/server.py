@@ -1,5 +1,5 @@
 import uvicorn
-
+import hashlib
 import time
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
@@ -21,6 +21,54 @@ class SearchRequest(BaseModel):
     endLocation: str
     time: str
 
+class UsernamePassword(BaseModel):
+    username : str 
+    password : str 
+
+@app.post('/create/account')
+def create_account(data : UsernamePassword):
+    username = data.username
+    password = data.password
+
+    with open("Usernames.txt", mode = 'r') as file:
+        all_forms = file.readlines()
+        if username in all_forms:
+            return {"message" : "duplicate username"}
+
+    with open("Usernames.txt", mode = 'w') as file:
+        file.write(username)
+
+    
+    with open("Passwords.txt", mode = 'w') as file:
+        file.write(hashlib.sha256(password).hexdigest())
+
+    return {"message" : "success"}
+
+@app.post('/login')
+def login(data : UsernamePassword):
+    username = data.username
+    password = data.password
+
+     with open("Usernames.txt", mode = 'r') as file:
+        all_forms = file.readlines()
+        thing = False
+        for form in all_forms:
+            if username == form:
+                thing = True
+        if thing is False:
+            return {"message" : "Invalid Username"}
+    hashed_password = hashlib.sha256(password).hexdigest()
+    with open("Passwords.txt", mode = 'r') as file:
+        all_forms = file.readlines()
+	thing =	False
+        for form in all_forms:
+            if username == form:
+                thing = True
+	if thing is False:
+            return {"message" : "Invalid Password"}
+
+        return {"message":"success"}
+
 @app.post('/request')
 def search(data : SearchRequest):
     # send format for time must be in date:hour:minute
@@ -28,7 +76,7 @@ def search(data : SearchRequest):
 	endLocation=data.endLocation
 	time=data.time
     processed_form = startLocation + 'ı' + endLocation + 'ı' + time
-    with open("database.txt", mode = 'r') as db:
+    with open("database.txt", mode = 'r') as file:
         all_forms = file.readlines()
     matched = False
     selected_form = None
@@ -42,7 +90,7 @@ def search(data : SearchRequest):
                 selected_form = form
                 break
 
-    with open("database.txt", mode = 'w') as db:
+    with open("database.txt", mode = 'w') as file:
         file.write(processed_form)
 
     if matched:
