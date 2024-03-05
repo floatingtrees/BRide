@@ -1,13 +1,12 @@
 import { useState } from "react";
 import Navbar from "./components/Navbar";
+import { useLocation , Link} from "react-router-dom";
 
 function SearchResult() {
+  const location = useLocation();
+  const {date, time, carpool} = location.state;
   const [count, setCount] = useState(0);
-  const [info, setInfo] = useState([Array(3).fill(null)]);
-
-  //this is for temporary testing
-
-  //
+  console.log(date)
 
   function SearchElement(props) {
     return (
@@ -17,9 +16,9 @@ function SearchResult() {
           console.log(count);
         }}
       >
-        <div>car id: {props.id}</div>
-        <div>car leave time:{props.time}</div>
-        <div>car destination:{props.destination}</div>
+        <div>car date: {date}</div>
+        <div>car time:{time}</div>
+        <div>car carpool number:{carpool}</div>       
       </button>
     );
   }
