@@ -2,7 +2,7 @@ import { useState } from "react";
 import Navbar from "./components/Navbar";
 import { useLocation , Link} from "react-router-dom";
 
-function SearchResult() {
+function SearchResultPage() {
   const location = useLocation();
   const {date, time, carpool} = location.state;
   const [count, setCount] = useState(0);
@@ -36,4 +36,4 @@ function SearchResult() {
   );
 }
 
-export default SearchResult;
+export default SearchResultPage;
