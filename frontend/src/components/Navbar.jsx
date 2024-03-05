@@ -21,9 +21,8 @@ const Navbar = () => {
           <Link to="/">Home</Link>
         </li>
         <li className="p-4">
-          <Link to="/search">Search</Link>
+          <Link to="/about">About</Link>
         </li>
-        <li className="p-4">About</li>
         <li className="p-4">Contact</li>
         <li className="p-4">
           <Link to="/login">Login</Link>
@@ -47,9 +46,8 @@ const Navbar = () => {
             <Link to="/">Home</Link>
           </li>
           <li className="p-4 border-b">
-            <Link to="/search">Search</Link>
+            <Link to="/about">About</Link>
           </li>
-          <li className="p-4 border-b">About</li>
           <li className="p-4">Contact</li>
           <li className="p-4 border-b">
             <Link to="/login">Login</Link>

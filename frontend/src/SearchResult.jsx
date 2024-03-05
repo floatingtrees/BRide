@@ -8,7 +8,7 @@ function SearchResultPage() {
   const [count, setCount] = useState(0);
   console.log(date)
 
-  function SearchElement(props) {
+  function SearchElement() {
     return (
       <button
         onClick={() => {
