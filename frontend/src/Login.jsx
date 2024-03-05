@@ -43,7 +43,7 @@ export default function LoginPage() {
               className="relative group/btn  w-full text-white h-10 font-bold bg-[#2774AE] btn overflow-hidden rounded-xl uppercase -- before:block before:absolute before:h-full before:w-1/2 before:rounded-full before:bg-orange-400 before:top-0 before:left-1/4 before:transition-transform before:opacity-0 before:hover:opacity-100 hover:text-[#FFD100] hover:before:animate-ping transition-all duration-300"
               type="submit"
             >
-              Sign up &rarr;
+              Log In&rarr;
               <BottomGradient />
             </button>
 
