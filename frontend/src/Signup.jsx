@@ -18,8 +18,25 @@ function SignUpPage() {
         return (null);
     }
   }
-  function validateCredentials(email, password) {
+  const validateCredentials = async (e) => {
+    try { 
+    const response = await fetch('/create/account', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'http://localhost:8000/application/json',
+        },
+        body: JSON.stringify({ 'username' : username, 'password' : password})})
+
     
+    if (response.ok) {
+      console.log("WORKS")
+    }
+
+    } catch (error) {
+      console.log("broken")
+    }
+    
+    return;
   }
   return (
   <>
