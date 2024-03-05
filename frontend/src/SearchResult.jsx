@@ -1,15 +1,14 @@
 import { useState } from "react";
 import Navbar from "./components/Navbar";
+import { useLocation , Link} from "react-router-dom";
 
-function SearchResult() {
+function SearchResultPage() {
+  const location = useLocation();
+  const {date, time, carpool} = location.state;
   const [count, setCount] = useState(0);
-  const [info, setInfo] = useState([Array(3).fill(null)]);
+  console.log(date)
 
-  //this is for temporary testing
-
-  //
-
-  function SearchElement(props) {
+  function SearchElement() {
     return (
       <button
         onClick={() => {
@@ -17,9 +16,9 @@ function SearchResult() {
           console.log(count);
         }}
       >
-        <div>car id: {props.id}</div>
-        <div>car leave time:{props.time}</div>
-        <div>car destination:{props.destination}</div>
+        <div>car date: {date}</div>
+        <div>car time:{time}</div>
+        <div>car carpool number:{carpool}</div>       
       </button>
     );
   }
@@ -37,4 +36,4 @@ function SearchResult() {
   );
 }
 
-export default SearchResult;
+export default SearchResultPage;

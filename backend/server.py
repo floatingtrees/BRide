@@ -1,6 +1,8 @@
 import uvicorn
 import hashlib
 import time
+from pydantic import BaseModel
+
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -49,7 +51,7 @@ def login(data : UsernamePassword):
     username = data.username
     password = data.password
 
-     with open("Usernames.txt", mode = 'r') as file:
+    with open("Usernames.txt", mode = 'r') as file:
         all_forms = file.readlines()
         thing = False
         for form in all_forms:
@@ -60,21 +62,21 @@ def login(data : UsernamePassword):
     hashed_password = hashlib.sha256(password).hexdigest()
     with open("Passwords.txt", mode = 'r') as file:
         all_forms = file.readlines()
-	thing =	False
-        for form in all_forms:
-            if username == form:
-                thing = True
-	if thing is False:
+    thing = False
+    for form in all_forms:
+        if username == form:
+            thing = True
+    if thing is False:
             return {"message" : "Invalid Password"}
 
-        return {"message":"success"}
+    return {"message":"success"}
 
 @app.post('/request')
 def search(data : SearchRequest):
     # send format for time must be in date:hour:minute
-	startLocation=data.startLocation
-	endLocation=data.endLocation
-	time=data.time
+    startLocation=data.startLocation
+    endLocation=data.endLocation
+    time=data.time
     processed_form = startLocation + 'ı' + endLocation + 'ı' + time
     with open("database.txt", mode = 'r') as file:
         all_forms = file.readlines()
