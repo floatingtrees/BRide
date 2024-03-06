@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
-import { Label } from "./components/label";
-import { Input } from "./components/input";
+import { Label } from "./components/Label";
+import { Input } from "./components/Input";
 import { cn } from "./utils/cn";
 
 import {
