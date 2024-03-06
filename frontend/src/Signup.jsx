@@ -48,7 +48,7 @@ export default function LoginPage() {
   return (
     <>
       <div class="flex items-center justify-center h-screen w-full bg-[url('https://media.nbclosangeles.com/2022/01/107003183-1642607336012-gettyimages-1236648722-873689_LA-ME-UCLA-FACULTY-STRIKE_16_ALS.jpeg?quality=85&strip=all&resize=1200%2C675')] bg-no-repeat bg-cover">
-        <div className="backdrop-blur-sm max-w-md w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-white">
+        <div className="backdrop-blur-sm max-w-md w-full mx-auto rounded-2xl p-4 md:p-8 shadow-input bg-white">
           <h2 className="font-bold text-xl text-[#2774AE] dark:text-[#2774AE]">
             Welcome to BRide.
           </h2>

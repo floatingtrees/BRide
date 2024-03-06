@@ -1,63 +1,79 @@
-import React, {useState} from "react";
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { Label } from "./Label";
+import { Input } from "./Input";
+import { cn } from "../utils/cn";
 
-function Searchbar(){
-    const [date, setDate] = useState("");
-    const [time, setTime] = useState("");
-    const [carpool, setCarpool] = useState("");
-    // console.log(date);
+function Searchbar() {
+  const [date, setDate] = useState("");
+  const [time, setTime] = useState("");
+  const [carpool, setCarpool] = useState("");
+  // console.log(date);
 
-    function FindMatch() {
-        // console.log("you clicked the fucking button!");
+  function FindMatch() {
+    // console.log("you clicked the fucking button!");
 
-        const sign = true;
-        if(! sign) {
-            return <button> Fuck </button>;
-        }
-        else {
-            const dataToPass = { date: date, time: time, carpool: carpool };
-            // console.log("date into" + date)
-            return (
-                <Link to="/search" state= {dataToPass}> 
-                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"> Button </button>
-                </Link>
-            )
-        }
+    const sign = true;
+    if (!sign) {
+      return <button> Fuck </button>;
+    } else {
+      const dataToPass = { date: date, time: time, carpool: carpool };
+      // console.log("date into" + date)
+      return (
+        <Link to="/search" state={dataToPass}>
+          <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            {" "}
+            Button{" "}
+          </button>
+        </Link>
+      );
     }
-    return (
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Form submitted");
+  };
+  return (
     <>
-        <div class="sm:col-span-4 flex justify-center items-center">
-            <label for="date" class="block text-sm font-large leading-6 text-gray-900">Leave Date</label>
-            <div class="mt-2">
-                <div class="block rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
-                    {/* <span class="flex select-none items-center pl-3 text-gray-500 sm:text-sm">workcation.com/</span> */}
-                    <input type="text" name="date" id="date"
-                     class="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-                     placeholder="date" onChange={(e) => setDate(e.target.value)}/>
-                </div>
-            </div>
-            <label for="time" class="block text-sm font-large leading-6 text-gray-900">Leave time</label>
-            <div class="mt-2">
-                <div class="block rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
-                    {/* <span class="flex select-none items-center pl-3 text-gray-500 sm:text-sm">workcation.com/</span> */}
-                    <input type="text" name="time" id="time" class="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-                     placeholder="time" onChange={(e) => setTime(e.target.value)}/>
-                </div>
-            </div>
-        </div>
-        <div class="sm:col-span-4 flex justify-center items-center">
-            <label for="carpool" class="block text-sm font-large leading-6 text-gray-900">Carpool Number</label>
-            <div class="mt-2">
-                <div class="block rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
-                    {/* <span class="flex select-none items-center pl-3 text-gray-500 sm:text-sm">workcation.com/</span> */}
-                    <input type="text" name="carpool" id="carpool" class="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" 
-                    placeholder="number" onChange={(e) => setCarpool(e.target.value)}/>
-                </div>
-            </div>
-        </div>
-        <FindMatch />
+      <div className="w-full mx-auto rounded-2xl p-4 my-4 bg-white">
+        <form className="bg-white rounded" onSubmit={handleSubmit}>
+          <div className="flex flex-col md:flex-row md:space-x-2">
+            <LabelInputContainer>
+              <Label htmlFor="firstname">Departure Date</Label>
+              <Input
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="date"
+                placeholder="MM/DD/YYYY"
+                type="text"
+              />
+            </LabelInputContainer>
+            <LabelInputContainer>
+              <Label htmlFor="lastname">Departure Time</Label>
+              <Input
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="time"
+                placeholder="HH:MM"
+                type="text"
+              />
+            </LabelInputContainer>
+            <button
+              className="mt-3.5 relative group/btn w-32 text-white h-10 font-bold bg-[#2774AE] btn overflow-hidden rounded-xl uppercase -- before:block before:absolute before:h-full before:w-1/2 before:rounded-full before:bg-orange-400 before:top-0 before:left-1/4 before:transition-transform before:opacity-0 before:hover:opacity-100 hover:text-[#FFD100] hover:before:animate-ping transition-all duration-300 hover:-translate-y-2 transform hover:shadow-md"
+              type="submit"
+            >
+              Go
+            </button>
+          </div>
+        </form>
+      </div>
     </>
-    )
+  );
 }
 
-export default Searchbar
+const LabelInputContainer = ({ children, className }) => {
+  return (
+    <div className={cn("flex flex-col w-full", className)}>{children}</div>
+  );
+};
+
+export default Searchbar;
