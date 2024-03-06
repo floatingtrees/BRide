@@ -3,12 +3,10 @@ import React from "react";
 import { Label } from "./components/Label";
 import { Input } from "./components/Input";
 import { cn } from "./utils/cn";
+import { Link } from "react-router-dom";
+import { LuLogIn } from "react-icons/lu";
 
-import {
-  IconBrandGithub,
-  IconBrandGoogle,
-  IconBrandOnlyfans,
-} from "@tabler/icons-react";
+import { IconBrandGoogle } from "@tabler/icons-react";
 
 export default function LoginPage() {
   const handleSubmit = (e) => {
@@ -40,23 +38,31 @@ export default function LoginPage() {
               />
             </LabelInputContainer>
             <button
-              className="relative group/btn  w-full text-white h-10 font-bold bg-[#2774AE] btn overflow-hidden rounded-xl uppercase -- before:block before:absolute before:h-full before:w-1/2 before:rounded-full before:bg-orange-400 before:top-0 before:left-1/4 before:transition-transform before:opacity-0 before:hover:opacity-100 hover:text-[#FFD100] hover:before:animate-ping transition-all duration-300"
+              className="relative group/btn w-full text-white h-10 font-bold bg-[#2774AE] btn overflow-hidden rounded-xl uppercase -- before:block before:absolute before:h-full before:w-1/2 before:rounded-full before:bg-orange-400 before:top-0 before:left-1/4 before:transition-transform before:opacity-0 before:hover:opacity-100 hover:text-[#FFD100] hover:before:animate-ping transition-all duration-300 hover:-translate-y-1 transform hover:shadow-md"
               type="submit"
             >
               Log In&rarr;
-              <BottomGradient />
             </button>
 
             <div className="bg-gradient-to-r from-transparent via-neutral-300 dark:via-neutral-700 to-transparent my-8 h-[1px] w-full" />
 
             <div className="flex flex-col space-y-4">
+              <Link to="/signup">
+                {" "}
+                <button
+                  className="relative group/btn flex space-x-2 items-center justify-start px-4 w-full rounded-md h-10 font-medium shadow-input bg-white hover:-translate-y-1 transform transition duration-200 hover:shadow-md"
+                  type="submit"
+                >
+                  <LuLogIn />
+                  <span className="text-black text-sm">Sign Up</span>
+                </button>
+              </Link>
               <button
-                className="relative group/btn flex space-x-2 items-center justify-start px-4 w-full rounded-md h-10 font-medium shadow-input bg-white"
+                className="relative group/btn flex space-x-2 items-center justify-start px-4 w-full rounded-md h-10 font-medium shadow-input bg-white hover:-translate-y-1 transform transition duration-200 hover:shadow-md"
                 type="submit"
               >
                 <IconBrandGoogle className="h-4 w-4 text-black" />
                 <span className="text-black text-sm">Google</span>
-                <BottomGradient />
               </button>
             </div>
           </form>
@@ -65,15 +71,6 @@ export default function LoginPage() {
     </>
   );
 }
-
-const BottomGradient = () => {
-  return (
-    <>
-      <span className="group-hover/btn:opacity-100 block transition duration-500 opacity-0 absolute h-10px w-full -bottom-px inset-x-0 bg-gradient-to-r from-transparent via-cyan-500 to-transparent" />
-      <span className="group-hover/btn:opacity-100 blur-sm block transition duration-500 opacity-0 absolute h-10px w-1/2 mx-auto -bottom-px inset-x-10 bg-gradient-to-r from-transparent via-indigo-500 to-transparent" />
-    </>
-  );
-};
 
 const LabelInputContainer = ({ children, className }) => {
   return (
