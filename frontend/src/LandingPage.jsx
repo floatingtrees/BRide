@@ -8,10 +8,8 @@ function LandingPage() {
   return (
     <div>
       <Navbar />
-      <TracingBeam className="px-6">
-        <Searchbar />
-        <Hero />
-      </TracingBeam>
+      <Searchbar />
+      <Hero />
     </div>
   );
 }

@@ -36,7 +36,7 @@ function Searchbar() {
   };
   return (
     <>
-      <div className="w-full mx-auto rounded-2xl p-4 my-4 bg-white">
+      <div className="flex justify-center items-center h-24 max-w-[1240px] px-6 mx-auto rounded-2xl p-4 my-4 bg-white">
         <form className="bg-white rounded" onSubmit={handleSubmit}>
           <div className="flex flex-col md:flex-row md:space-x-2">
             <LabelInputContainer>
