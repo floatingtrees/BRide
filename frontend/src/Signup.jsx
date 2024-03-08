@@ -19,22 +19,21 @@ function SignUpPage() {
     }
   }
   const validateCredentials = async (e) => {
-    try { 
-    const response = await fetch('/create/account', {
+    
+    const response = await fetch('http://localhost:8000/create/account', {
         method: 'POST',
         headers: {
-          'Content-Type': 'http://localhost:8000/application/json',
+          'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ 'username' : username, 'password' : password})})
+        body: JSON.stringify({ 'username' : email, 'password' : password})
+      })
 
     
     if (response.ok) {
       console.log("WORKS")
     }
 
-    } catch (error) {
-      console.log("broken")
-    }
+    
     
     return;
   }

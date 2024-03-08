@@ -5,6 +5,7 @@ function AboutPage() {
     function AboutContents() {
         return(
             <>
+
 <div class=" pt-20 lg:overflow-visible lg:px-10">
   <div class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-start lg:gap-y-10">
     <div class="lg:col-span-2 lg:col-start-1 lg:row-start-1 lg:mx-auto lg:grid lg:w-full lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
@@ -58,8 +59,11 @@ function AboutPage() {
 
     return (
         <>
+        
             <Navbar />
+            <div style={{margin: '20px', display: 'flex',  justifyContent:'center', alignItems:'center'}}>
             <AboutContents />
+            </div>
         </>
     )
 
