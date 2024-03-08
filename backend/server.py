@@ -1,3 +1,6 @@
+# Main code for the server
+# Includes functions for account creation, login, and search requests
+
 import uvicorn
 import hashlib
 import time
@@ -8,16 +11,16 @@ from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 
-# Add CORSMiddleware to the application
+# Add CORS to the application
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Allows all origins
+    allow_origins=["*"],  
     allow_credentials=True,
-    allow_methods=["*"],  # Allows all methods
-    allow_headers=["*"],  # Allows all headers
+    allow_methods=["*"], 
+    allow_headers=["*"],  
 )
 
-
+# Data structures for what each request sends
 class SearchRequest(BaseModel):
     startLocation: str
     endLocation: str
@@ -32,17 +35,17 @@ def create_account(data : UsernamePassword):
     username = data.username
     password = data.password
 
-    with open("Usernames.txt", mode = 'r') as file:
+    with open("data/Usernames.txt", mode = 'r') as file:
         all_forms = file.readlines()
         if username in all_forms:
             return {"message" : "duplicate username"}
 
-    with open("Usernames.txt", mode = 'w') as file:
-        file.write(username)
+    with open("Usernames.txt", mode = 'a') as file:
+        file.write('\n' + username)
 
     
-    with open("Passwords.txt", mode = 'w') as file:
-        file.write(hashlib.sha256(password).hexdigest())
+    with open("data/Passwords.txt", mode = 'a') as file:
+        file.write('\n' + hashlib.sha256(password.encode()).hexdigest())
 
     return {"message" : "success"}
 
@@ -51,7 +54,7 @@ def login(data : UsernamePassword):
     username = data.username
     password = data.password
 
-    with open("Usernames.txt", mode = 'r') as file:
+    with open("data/Usernames.txt", mode = 'r') as file:
         all_forms = file.readlines()
         thing = False
         for form in all_forms:
@@ -59,8 +62,8 @@ def login(data : UsernamePassword):
                 thing = True
         if thing is False:
             return {"message" : "Invalid Username"}
-    hashed_password = hashlib.sha256(password).hexdigest()
-    with open("Passwords.txt", mode = 'r') as file:
+    hashed_password = hashlib.sha256(password.encode()).hexdigest()
+    with open("data/Passwords.txt", mode = 'r') as file:
         all_forms = file.readlines()
     thing = False
     for form in all_forms:
@@ -101,7 +104,9 @@ def search(data : SearchRequest):
     else:
         return {"success" : str(matched)}
 
-# dest, time, start location, 
+@app.post('/book/ride')
+def book_ride(data : SearchRequest):
+    
 
 if __name__ == '__main__':
     uvicorn.run("server:app", host="0.0.0.0", port=8000, reload=True)
