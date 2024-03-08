@@ -6,7 +6,6 @@ function SearchResultPage() {
   const location = useLocation();
   const {date, time, carpool} = location.state;
   const [count, setCount] = useState(0);
-  console.log(date)
 
   function SearchElement() {
     return (

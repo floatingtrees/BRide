@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate} from "react-router-dom";
 import { Label } from "./Label";
 import { Input } from "./Input";
 import { cn } from "../utils/cn";
@@ -7,33 +7,22 @@ import { cn } from "../utils/cn";
 function Searchbar() {
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
-  const [carpool, setCarpool] = useState("");
-  // console.log(date);
+  const navigate = useNavigate();
 
-  function FindMatch() {
-    // console.log("you clicked the fucking button!");
-
-    const sign = true;
-    if (!sign) {
-      return <button> Fuck </button>;
-    } else {
-      const dataToPass = { date: date, time: time, carpool: carpool };
-      // console.log("date into" + date)
-      return (
-        <Link to="/search" state={dataToPass}>
-          <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-            {" "}
-            Button{" "}
-          </button>
-        </Link>
-      );
-    }
+  function getSearchResult() {
+    return true;
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form submitted");
+    const sign = getSearchResult();
+
+    if(sign) {
+        const dataToPass = {date: date, time: time}
+        navigate('/search', { state: dataToPass });
+    }
   };
+
   return (
     <>
       <div className="flex justify-center items-center h-24 max-w-[1240px] px-6 mx-auto rounded-2xl p-4 my-4 bg-white">
@@ -46,6 +35,7 @@ function Searchbar() {
                 id="date"
                 placeholder="MM/DD/YYYY"
                 type="text"
+                onChange={(e) => setDate(e.target.value)}
               />
             </LabelInputContainer>
             <LabelInputContainer>
@@ -55,6 +45,7 @@ function Searchbar() {
                 id="time"
                 placeholder="HH:MM"
                 type="text"
+                onChange={(e) => setTime(e.target.value)}
               />
             </LabelInputContainer>
             <button
