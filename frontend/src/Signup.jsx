@@ -8,9 +8,9 @@ import { Link } from "react-router-dom";
 import { IconBrandGoogle } from "@tabler/icons-react";
 
 export default function LoginPage() {
-  const [email, setEmail] = useState("potato@farmer.edu");
-  const [confirmPassword, setConfirmPassword] = useState("hello");
-  const [password, setPassword] = useState("hello");
+  const [email, setEmail] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [password, setPassword] = useState("");
 
   function ConfirmPasswords() {
     const same = confirmPassword === password;
@@ -21,14 +21,12 @@ export default function LoginPage() {
       return null;
     }
   }
-
-  const handleSubmit = async (e) => {
+  const validateCredentials = async (e) => {
     try {
-      console.log("Form submitted");
-      const response = await fetch("http://localhost:8000/create/account", {
+      const response = await fetch("/create/account", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
+          "Content-Type": "http://localhost:8000/application/json",
         },
         body: JSON.stringify({ username: username, password: password }),
       });
@@ -40,7 +38,12 @@ export default function LoginPage() {
       console.log("broken");
     }
 
-    
+    return;
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Form submitted");
   };
   return (
     <>
