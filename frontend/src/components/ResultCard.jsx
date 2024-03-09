@@ -12,37 +12,39 @@ function ResultCard(props) {
   return (
     <>
       <Grid item xs={12} sm={4} ms={4} className="relative">
-        <Card
-          sx={{ maxWidth: 345 }}
-          style={{
-            padding: "10xp",
-            marginBottom: "30px",
-            borderRadius: "20px",
-          }}
-        >
-          <CardActionArea>
-            <CardMedia
-              component="img"
-              height="140"
-              image={img}
-              alt="green iguana"
-            />
-            <CardContent>
-              <Typography gutterBottom variant="h5" component="div">
-                {props.name}
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                Join {props.name}'s Ride!
-                <br />
-                <b>Location: </b>
-                {props.location}
-                <br />
-                <b>Time: </b>
-                {props.time}
-              </Typography>
-            </CardContent>
-          </CardActionArea>
-        </Card>
+        <Link to="/select">
+          <Card
+            sx={{ maxWidth: 345 }}
+            style={{
+              padding: "10xp",
+              marginBottom: "30px",
+              borderRadius: "20px",
+            }}
+          >
+            <CardActionArea>
+              <CardMedia
+                component="img"
+                height="140"
+                image={img}
+                alt="green iguana"
+              />
+              <CardContent>
+                <Typography gutterBottom variant="h5" component="div">
+                  {props.name}
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  Join {props.name}'s Ride!
+                  <br />
+                  <b>Location: </b>
+                  {props.location}
+                  <br />
+                  <b>Time: </b>
+                  {props.time}
+                </Typography>
+              </CardContent>
+            </CardActionArea>
+          </Card>
+        </Link>
       </Grid>
     </>
   );

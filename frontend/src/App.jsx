@@ -4,6 +4,7 @@ import LandingPage from "./LandingPage.jsx";
 import SearchResultPage from "./SearchResult.jsx";
 import LoginPage from "./Login.jsx";
 import SignUpPage from "./Signup.jsx";
+import ScooterSelectPage from "./ScooterSelect.jsx";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path="/search" element={<SearchResultPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignUpPage />} />
+          <Route path="/select" element={<ScooterSelectPage />} />
         </Routes>
       </Router>
     </div>
