@@ -12,7 +12,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="flex justify-between items-center h-24 max-w-[1240px] mx-auto px-6 text-[#2774AE] shadow-md">
+    <div className="flex justify-between items-center h-24  mx-auto px-6 text-[#2774AE] shadow-md fixed top-0 w-full">
       <h1 className="w-full text-3xl font-bold text-[#2774AE] m-4">
         <Link to="/">BRide.</Link>
       </h1>

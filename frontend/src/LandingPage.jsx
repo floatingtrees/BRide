@@ -6,11 +6,13 @@ import { TracingBeam } from "./components/TracingBeamScroll";
 
 function LandingPage() {
   return (
-    <div>
-      <Navbar />
-      <Searchbar />
-      <Hero />
-    </div>
+    <>
+      <div>
+        <Navbar />
+        <Hero />
+        <Searchbar />
+      </div>
+    </>
   );
 }
 
