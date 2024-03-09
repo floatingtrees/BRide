@@ -12,7 +12,27 @@ function Searchbar() {
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
+    
     e.preventDefault();
+     
+    const timeRegex = /^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/;
+    console.log(timeRegex)
+
+    // Allow empty value to let user clear the input or type from scratch
+    if (!timeRegex.test(time)) {
+      alert("Time must be in the format of HH:MM, such as 09:30")
+      return;
+
+    }
+    const dateRegex = /^(0[1-9]|1[0-2])\/(0[1-9]|[12][0-9]|3[01])\/(19|20)\d\d$/;
+    console.log(dateRegex)
+
+    // Allow empty value to let user clear the input or type from scratch
+    if (!dateRegex.test(date)) {
+      alert("Time must be in the format of HH:MM, such as 09:30")
+      return;
+
+    }
     console.log(date + time)
     const response = await fetch("http://localhost:8000/request", {
         method: "POST",
@@ -78,6 +98,7 @@ function Searchbar() {
                 class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 id="time"
                 placeholder="HH:MM"
+                maxLength="5"
                 type="text"
                 onChange={(e) => setTime(e.target.value)}
               />

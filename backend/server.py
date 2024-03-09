@@ -103,9 +103,6 @@ def search(data : SearchRequest):
                 selected_form = form
                 break
 
-    with open("data/database.txt", mode = 'a') as file:
-        file.write('\n' + processed_form)
-
     if matched:
         selected_form = selected_form.split('ı')
         return {"success" : str(matched), "startLocation" : selected_form[0], "endLocation" : selected_form[1], "time" : selected_form[2]}
@@ -114,7 +111,15 @@ def search(data : SearchRequest):
 
 @app.post('/book/ride')
 def book_ride(data : SearchRequest):
-    pass
+
+    with open("data/database.txt", mode = 'a') as file:
+        file.write('\n' + processed_form)
+
+    if matched:
+        selected_form = selected_form.split('ı')
+        return {"success" : str(matched), "startLocation" : selected_form[0], "endLocation" : selected_form[1], "time" : selected_form[2]}
+    else:
+        return {"success" : str(matched)}
     
 
 if __name__ == '__main__':
