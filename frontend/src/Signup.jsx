@@ -34,13 +34,9 @@ export default function LoginPage() {
       })
       .then(response => response.json())
       .then(data => {
+        console.log(data.message)
     })
-      console.log(data.message)
-
-
-      if (response.ok) {
-        console.log("WORKS");
-      }
+      
 
 
     console.log("Form submitted");
