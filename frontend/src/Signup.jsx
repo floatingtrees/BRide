@@ -24,7 +24,6 @@ export default function LoginPage() {
 
   const handleSubmit = async (e) => {
     try {
-      console.log("Form submitted");
       const response = await fetch("http://localhost:8000/create/account", {
         method: "POST",
         headers: {
@@ -40,7 +39,7 @@ export default function LoginPage() {
       console.log("broken");
     }
 
-    
+    console.log("Form submitted");
   };
   return (
     <>

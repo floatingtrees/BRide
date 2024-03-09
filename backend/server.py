@@ -106,6 +106,7 @@ def search(data : SearchRequest):
 
 @app.post('/book/ride')
 def book_ride(data : SearchRequest):
+    pass
     
 
 if __name__ == '__main__':

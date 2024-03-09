@@ -32,9 +32,9 @@ export default function LoginPage() {
       console.log(data.message)
 
     })
-  }
-  catch {
-  }
+  } catch {
+    
+    // check password and email, or google log in
   }
 
     
