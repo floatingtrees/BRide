@@ -56,14 +56,12 @@ def create_account(data : UsernamePassword):
 def login(data : UsernamePassword):
     username = data.username
     password = data.password
-    print(username, password)
 
     with open("data/Usernames.txt", mode = 'r') as file:
         all_forms = file.readlines()
         thing = False
         for i, form in enumerate(all_forms):
             form = form.replace('\n', '')
-            print(repr(username), repr(form), username == form)
             if username == form:
                 thing = True
                 index = i
@@ -76,7 +74,6 @@ def login(data : UsernamePassword):
         all_forms = file.readlines()
     thing = False
     form = all_forms[index].replace('\n', '')
-    print(repr(hashed_password), repr(form))
     if hashed_password != form:
         return {"message" : "Invalid Password"}
 

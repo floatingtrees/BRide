@@ -1,9 +1,10 @@
 #!/bin/bash
 
 cd backend
-python -m venv
-source venv/bin/activate
-pip3 install -r requirements.txt
+python -m venv venv2
+source venv2/bin/activate
+pip3 install fastapi
+pip3 install uvicorn
 
 cd ../frontend
 npm install
