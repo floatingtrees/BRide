@@ -42,9 +42,6 @@ const Navbar = () => {
           <li className="p-4 border-b">
             <Link to="/">Home</Link>
           </li>
-          <li className="p-4 border-b">
-            <Link to="/about">About</Link>
-          </li>
           <li className="p-4">Contact</li>
           <li className="p-4 border-b">
             <Link to="/login">Login</Link>
