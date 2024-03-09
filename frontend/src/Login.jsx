@@ -16,13 +16,13 @@ export default function LoginPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try{
+
     const response = await fetch("http://localhost:8000/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ username: username, password: password }),
+        body: JSON.stringify({ 'username': email, 'password': password }),
       })
     .then(response => response.json())
     .then(data => {
@@ -32,10 +32,7 @@ export default function LoginPage() {
       console.log(data.message)
 
     })
-  } catch {
-    
-    // check password and email, or google log in
-  }
+
 
     
   };

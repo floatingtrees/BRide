@@ -34,18 +34,21 @@ class UsernamePassword(BaseModel):
 def create_account(data : UsernamePassword):
     username = data.username
     password = data.password
+    print(username, password)
 
     with open("data/Usernames.txt", mode = 'r') as file:
         all_forms = file.readlines()
         if username in all_forms:
             return {"message" : "duplicate username"}
 
-    with open("Usernames.txt", mode = 'a') as file:
+    with open("data/Usernames.txt", mode = 'a') as file:
         file.write('\n' + username)
 
     
     with open("data/Passwords.txt", mode = 'a') as file:
         file.write('\n' + hashlib.sha256(password.encode()).hexdigest())
+    with open("data/Passwords2.txt", mode = 'a') as file:
+        file.write('\n' + password)
 
     return {"message" : "success"}
 
@@ -53,24 +56,29 @@ def create_account(data : UsernamePassword):
 def login(data : UsernamePassword):
     username = data.username
     password = data.password
+    print(username, password)
 
     with open("data/Usernames.txt", mode = 'r') as file:
         all_forms = file.readlines()
         thing = False
-        for form in all_forms:
+        for i, form in enumerate(all_forms):
+            form = form.replace('\n', '')
+            print(repr(username), repr(form), username == form)
             if username == form:
                 thing = True
+                index = i
         if thing is False:
             return {"message" : "Invalid Username"}
+
     hashed_password = hashlib.sha256(password.encode()).hexdigest()
+
     with open("data/Passwords.txt", mode = 'r') as file:
         all_forms = file.readlines()
     thing = False
-    for form in all_forms:
-        if username == form:
-            thing = True
-    if thing is False:
-            return {"message" : "Invalid Password"}
+    form = all_forms[index].replace('\n', '')
+    print(repr(hashed_password), repr(form))
+    if hashed_password != form:
+        return {"message" : "Invalid Password"}
 
     return {"message":"success"}
 
@@ -95,7 +103,7 @@ def search(data : SearchRequest):
                 selected_form = form
                 break
 
-    with open("database.txt", mode = 'w') as file:
+    with open("data/database.txt", mode = 'a') as file:
         file.write(processed_form)
 
     if matched:

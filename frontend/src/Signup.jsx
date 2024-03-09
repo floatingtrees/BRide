@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import { IconBrandGoogle } from "@tabler/icons-react";
 
 export default function LoginPage() {
-  const [email, setEmail] = useState("potato@farmer.edu");
+  const [email, setEmail] = useState("potato2@farmer.edu");
   const [confirmPassword, setConfirmPassword] = useState("hello");
   const [password, setPassword] = useState("hello");
 
@@ -23,21 +23,25 @@ export default function LoginPage() {
   }
 
   const handleSubmit = async (e) => {
-    try {
+    e.preventDefault();
+
       const response = await fetch("http://localhost:8000/create/account", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ username: username, password: password }),
-      });
+        body: JSON.stringify({ 'username': email, 'password': password }),
+      })
+      .then(response => response.json())
+      .then(data => {
+    })
+      console.log(data.message)
+
 
       if (response.ok) {
         console.log("WORKS");
       }
-    } catch (error) {
-      console.log("broken");
-    }
+
 
     console.log("Form submitted");
   };
@@ -56,6 +60,7 @@ export default function LoginPage() {
                 id="email"
                 placeholder="das@cs.ucla.edu"
                 type="email"
+                onChange={(e) => setEmail(e.target.value)}
               />
             </LabelInputContainer>
             <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4">
@@ -85,6 +90,7 @@ export default function LoginPage() {
                 id="password"
                 placeholder="••••••••"
                 type="password"
+                onChange={(e) => setPassword(e.target.value)}
               />
             </LabelInputContainer>
             <LabelInputContainer className="mb-4">
@@ -94,16 +100,17 @@ export default function LoginPage() {
                 id="repassword"
                 placeholder="••••••••"
                 type="repassword"
+                onChange={(e) => setConfirmPassword(e.target.value)}
               />
             </LabelInputContainer>
-            <Link to="/login">
+            
               <button
                 className="relative group/btn w-full text-white h-10 font-bold bg-[#2774AE] btn overflow-hidden rounded-xl uppercase -- before:block before:absolute before:h-full before:w-1/2 before:rounded-full before:bg-orange-400 before:top-0 before:left-1/4 before:transition-transform before:opacity-0 before:hover:opacity-100 hover:text-[#FFD100] hover:before:animate-ping transition-all duration-300 hover:-translate-y-1 transform hover:shadow-md"
                 type="submit"
               >
                 Sign Up
               </button>
-            </Link>
+              
           </form>
         </div>
       </div>
