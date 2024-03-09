@@ -7,20 +7,34 @@ import { cn } from "../utils/cn";
 function Searchbar() {
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
+  const [start, setStart] = useState("");
+  const [end, setEnd] = useState("");
   const navigate = useNavigate();
 
-  function getSearchResult() {
-    return true;
-  }
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const sign = getSearchResult();
+    console.log(date + time)
+    const response = await fetch("http://localhost:8000/request", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ 'startLocation': start, 'endLocation': end, 'time': date + time}),
+      })
+    .then(response => response.json())
+    .then(data => {
+      if (data.success == 'True') {
+      const sign = true;
+      console.log(sign)
+      }
+      else {
+        const sign = false;
+        console.log(sign)
+      }
+      console.log(data)
+      
+    })
 
-    if (sign) {
-      const dataToPass = { date: date, time: time };
-      navigate("/search", { state: dataToPass });
-    }
   };
 
   return (
@@ -28,6 +42,26 @@ function Searchbar() {
       <div className="flex justify-center items-center h-24 max-w-[1240px] px-6 mx-auto rounded-2xl p-4 my-4 bg-white">
         <form className="bg-white rounded" onSubmit={handleSubmit}>
           <div className="flex flex-col md:flex-row md:space-x-2">
+          <LabelInputContainer>
+              <Label htmlFor="firstname">Arrival Location</Label>
+              <Input
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="start"
+                placeholder="Haines Hall 39"
+                type="text"
+                onChange={(e) => setStart(e.target.value)}
+              />
+            </LabelInputContainer>
+            <LabelInputContainer>
+              <Label htmlFor="firstname">Departure Location</Label>
+              <Input
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="end"
+                placeholder="Epicura at Ackerman"
+                type="text"
+                onChange={(e) => setEnd(e.target.value)}
+              />
+            </LabelInputContainer>
             <LabelInputContainer>
               <Label htmlFor="firstname">Departure Date</Label>
               <Input

@@ -86,22 +86,25 @@ def search(data : SearchRequest):
     endLocation=data.endLocation
     time=data.time
     processed_form = startLocation + 'ı' + endLocation + 'ı' + time
-    with open("database.txt", mode = 'r') as file:
+    with open("data/database.txt", mode = 'r') as file:
         all_forms = file.readlines()
     matched = False
     selected_form = None
     for form in all_forms:
+        form = form.replace('\n', '')
+        print(form, processed_form)
         # everything is the same except for minute and hour
         if form[:-4] == processed_form[:-4]:
-            form_time = int(form[:-4] + form[-2:-1])
-            processed_form_time = int(form[:-4] + form[-2:-1])
-            if abs(form_time - processed_form) <= 30:
+            form_time = int(form[-5] + form[-4] + form[-2] + form[-1])
+            print(form_time)
+            processed_form_time = int(processed_form[-5] + processed_form[-4] + processed_form[-2] + processed_form[-1])
+            if abs(form_time - processed_form_time) <= 30:
                 matched = True
                 selected_form = form
                 break
 
     with open("data/database.txt", mode = 'a') as file:
-        file.write(processed_form)
+        file.write('\n' + processed_form)
 
     if matched:
         selected_form = selected_form.split('ı')
