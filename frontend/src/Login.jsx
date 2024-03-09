@@ -12,11 +12,30 @@ import { IconBrandGoogle } from "@tabler/icons-react";
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loggedIn, setLoggedIn] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form submitted");
-    // check password and email, or google log in
+    try{
+    const response = await fetch("http://localhost:8000/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ username: username, password: password }),
+      })
+    .then(response => response.json())
+    .then(data => {
+      if (data.message == "success") {
+        setLoggedIn(true)
+      }
+      console.log(data.message)
+
+    })
+  }
+  catch {
+  }
+  }
 
     
   };
