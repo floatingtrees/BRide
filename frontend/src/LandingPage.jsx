@@ -4,6 +4,8 @@ import Hero from "./components/Hero";
 import About from "./components/About";
 import Searchbar from "./components/Searchbar";
 import HowTo from "./components/HowTo";
+import Last from "./components/Last";
+import Footer from "./components/Footer";
 
 function LandingPage() {
   return (
@@ -14,6 +16,8 @@ function LandingPage() {
         <Searchbar />
         <About />
         <HowTo />
+        <Last />
+        <Footer />
       </div>
     </>
   );
