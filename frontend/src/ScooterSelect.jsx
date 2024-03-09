@@ -1,6 +1,5 @@
 import {React} from "react";
 import img from "./assets/scooter.jpg";
-import ChooseSeat from "./components/ChooseSeat";
 
 function ScooterSelectPage(prop) {
     return (
