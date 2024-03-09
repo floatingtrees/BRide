@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useNavigate} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Label } from "./Label";
 import { Input } from "./Input";
 import { cn } from "../utils/cn";
@@ -17,9 +17,9 @@ function Searchbar() {
     e.preventDefault();
     const sign = getSearchResult();
 
-    if(sign) {
-        const dataToPass = {date: date, time: time}
-        navigate('/search', { state: dataToPass });
+    if (sign) {
+      const dataToPass = { date: date, time: time };
+      navigate("/search", { state: dataToPass });
     }
   };
 
@@ -49,7 +49,7 @@ function Searchbar() {
               />
             </LabelInputContainer>
             <button
-              className="mt-3.5 relative group/btn w-32 text-white h-10 font-bold bg-[#2774AE] btn overflow-hidden rounded-xl uppercase -- before:block before:absolute before:h-full before:w-1/2 before:rounded-full before:bg-orange-400 before:top-0 before:left-1/4 before:transition-transform before:opacity-0 before:hover:opacity-100 hover:text-[#FFD100] hover:before:animate-ping transition-all duration-300 hover:-translate-y-2 transform hover:shadow-md"
+              className="mt-3.5 group/btn w-32 text-white h-10 font-bold bg-[#2774AE] btn overflow-hidden rounded-xl uppercase duration-300 hover:-translate-y-2 hover:shadow-md"
               type="submit"
             >
               Go
