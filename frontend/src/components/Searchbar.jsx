@@ -9,7 +9,15 @@ function Searchbar() {
   const [time, setTime] = useState("");
   const [start, setStart] = useState("");
   const [end, setEnd] = useState("");
+  const dataToSend = {startLocation:"", endLocation:"", date:"", time:""}
   const navigate = useNavigate();
+
+  function retrieveData(data) {
+    dataToSend.startLocation=data.startLocation;
+    dataToSend.endLocation=data.endLocation;
+    dataToSend.time=data.time.substring(data.time.length - 5);
+    dataToSend.date=data.time.substring(0,data.time.length-5);
+  }
 
   const handleSubmit = async (e) => {
     
@@ -45,15 +53,14 @@ function Searchbar() {
     .then(data => {
       if (data.success == 'True') {
       const sign = true;
-      console.log(sign)
+      retrieveData(data);
       }
       else {
         const sign = false;
-        console.log(sign)
       }
-      console.log(data)
-      
-    })
+      console.log(dataToSend);
+    });
+    navigate('/search', {state: dataToSend})
 
   };
 
