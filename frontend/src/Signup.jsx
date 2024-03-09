@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Label } from "./components/Label";
 import { Input } from "./components/Input";
 import { cn } from "./utils/cn";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { IconBrandGoogle } from "@tabler/icons-react";
 
@@ -11,21 +11,20 @@ export default function LoginPage() {
   const [email, setEmail] = useState("potato2@farmer.edu");
   const [confirmPassword, setConfirmPassword] = useState("hello");
   const [password, setPassword] = useState("hello");
+  const navigate = useNavigate();
 
   function ConfirmPasswords() {
     const same = confirmPassword === password;
     if (confirmPassword.length === 0) return;
-    if (!same) {
-      return <h1>The passwords are not the same!</h1>;
-    } else {
-      return null;
-    }
+    return same;
+
   }
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
 
-      const response = await fetch("http://localhost:8000/create/account", {
+    e.preventDefault();
+    if(!ConfirmPasswords()) return;
+    const response = await fetch("http://localhost:8000/create/account", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -34,13 +33,14 @@ export default function LoginPage() {
       })
       .then(response => response.json())
       .then(data => {
-        console.log(data.message)
+        const message = data.message;
+        console.log(message)
+        if (message === "success") {
+          navigate('/login');
+        }
     })
-      
-
-
-    console.log("Form submitted");
   };
+  
   return (
     <>
       <div class="flex items-center justify-center h-screen w-full bg-[url('https://media.nbclosangeles.com/2022/01/107003183-1642607336012-gettyimages-1236648722-873689_LA-ME-UCLA-FACULTY-STRIKE_16_ALS.jpeg?quality=85&strip=all&resize=1200%2C675')] bg-no-repeat bg-cover">
@@ -95,7 +95,7 @@ export default function LoginPage() {
                 class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 id="repassword"
                 placeholder="••••••••"
-                type="repassword"
+                type="password"
                 onChange={(e) => setConfirmPassword(e.target.value)}
               />
             </LabelInputContainer>
