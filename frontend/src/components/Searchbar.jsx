@@ -37,7 +37,7 @@ function Searchbar() {
 
     // Allow empty value to let user clear the input or type from scratch
     if (!dateRegex.test(date)) {
-      alert("Time must be in the format of HH:MM, such as 09:30")
+      alert("Date must be in the format of MM/DD/YYYY, such as 4/1/2024")
       return;
 
     }
