@@ -5,3 +5,4 @@ tmp/
 frontend/node_modules
 venv/
 venv2/
+data/
