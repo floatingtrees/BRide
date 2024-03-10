@@ -17,6 +17,8 @@ else
 	mkdir data
 	cd data
 	touch database.txt
+	touch Usernames.txt
+	touch Passwords.txt
 	cd ../..
 fi
 
