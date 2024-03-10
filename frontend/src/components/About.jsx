@@ -1,5 +1,5 @@
 import React from "react";
-import scooter from "../assets/First.png";
+import scooter from "../assets/first.png";
 
 const About = () => {
   const paragraphStyle = {
