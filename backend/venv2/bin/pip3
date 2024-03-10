@@ -1,4 +1,4 @@
-#!/home/edwardsun/Documents/College/UCLAClasses/2024/Winter/CS35L/BRide/backend/venv2/bin/python3
+#!/Users/floatingtrees/Desktop/BRide/backend/venv2/bin/python3
 # -*- coding: utf-8 -*-
 import re
 import sys
