@@ -17,7 +17,7 @@ function ScooterSelectPage(prop) {
   }
   return (
     <>
-      <div className="w-full py-32 px-4">
+      <div className="w-full  px-4 flex flex-row min-h-screen justify-center items-center">
         <div className="mx-auto grid md:grid-cols-2 sm:grid-col-1 gap-48 px-96">
           <figure class="max-w-lg">
             <img
