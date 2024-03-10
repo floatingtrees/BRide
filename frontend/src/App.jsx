@@ -6,10 +6,12 @@ import LoginPage from "./Login.jsx";
 import SignUpPage from "./Signup.jsx";
 import ScooterSelectPage from "./ScooterSelect.jsx";
 import Contact from "./Contact.jsx";
+import { Toaster, toast } from "sonner";
 
 function App() {
   return (
     <div>
+      <Toaster />
       <Router>
         <Routes>
           <Route path="/" element={<LandingPage />} />
