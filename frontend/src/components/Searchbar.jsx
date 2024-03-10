@@ -13,13 +13,10 @@ function Searchbar() {
   const navigate = useNavigate();
 
   function retrieveData(data) {
-    //if we have multiple queries returned; for later
-    // dataToSend.startLocation=data.startLocation;
-    // dataToSend.endLocation=data.endLocation;
-    // dataToSend.time=data.time.substring(data.time.length - 5);
-    // dataToSend.date=data.time.substring(0,data.time.length-5);
-
-    dataToSend = {startLocation: start, endlocation: end, date: date, time: time};
+    dataToSend.startLocation=data.startLocation;
+    dataToSend.endLocation=data.endLocation;
+    dataToSend.time=data.time.substring(data.time.length - 5);
+    dataToSend.date=data.time.substring(0,data.time.length-5);
   }
 
   const handleSubmit = async (e) => {
@@ -44,6 +41,7 @@ function Searchbar() {
       return;
 
     }
+    console.log(date + time)
     const response = await fetch("http://localhost:8000/request", {
         method: "POST",
         headers: {
@@ -53,9 +51,12 @@ function Searchbar() {
       })
     .then(response => response.json())
     .then(data => {
-      console.log(data);
-      if (data.success === "True") {
-        retrieveData(data);
+      if (data.success == 'True') {
+      const sign = true;
+      retrieveData(data);
+      }
+      else {
+        const sign = false;
       }
       console.log(dataToSend);
     });

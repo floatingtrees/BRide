@@ -3,7 +3,7 @@ import React from "react";
 import { Label } from "./components/Label";
 import { Input } from "./components/Input";
 import { cn } from "./utils/cn";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { LuLogIn } from "react-icons/lu";
 import { useState } from "react";
 
@@ -12,7 +12,7 @@ import { IconBrandGoogle } from "@tabler/icons-react";
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate();
+  const [loggedIn, setLoggedIn] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -27,10 +27,7 @@ export default function LoginPage() {
     .then(response => response.json())
     .then(data => {
       if (data.message == "success") {
-        window.localStorage.setItem("isLoggedIn", true);
-        window.localStorage.setItem("email", email);
-        window.localStorage.setItem("password", password);
-        navigate('/');
+        setLoggedIn(true)
       }
       console.log(data.message)
 

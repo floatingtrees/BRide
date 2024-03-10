@@ -1,6 +1,5 @@
 import * as React from "react";
-import img from "./assets/Card.jpg";
-import default_img from "./assets/default_card.jpg";
+
 import Navbar from "./components/Navbar";
 import { useLocation, Link } from "react-router-dom";
 import { Grid } from "@mui/material";
@@ -25,31 +24,27 @@ function SearchResultPage() {
     <>
       <div className="pt-24">
         <Searchbar />
-        <h1 className="flex justify-center text-[#0380fc] md:text-7xl sm:tetx-6xl text-4xl font-bold md:py-6">
-          Your Search Results
-        </h1>
         <Container maxWidth="lg">
           <Grid
             container
             spacing={5}
-            style={{ marginTop: "-15px" }}
+            style={{ marginTop: "20px" }}
             columns={16}
           >
             <ResultCard
-              name="New Scooter!!!"
-              img={default_img}
+              name="Bob John"
+              location="De Neve Plaza"
+              time="10:10 AM"
             />
             <ResultCard
               name="Bob John"
               location="De Neve Plaza"
               time="10:10 AM"
-              img={img}
             />
             <ResultCard
               name="Bob John"
               location="De Neve Plaza"
               time="10:10 AM"
-              img={img}
             />
           </Grid>
         </Container>
