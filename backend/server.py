@@ -26,6 +26,12 @@ class SearchRequest(BaseModel):
     endLocation: str
     time: str
 
+class BetterSearchRequest(BaseModel):
+    startLocation: str
+    endLocation: str
+    time: str
+    username : str
+
 class UsernamePassword(BaseModel):
     username : str
     password : str
@@ -91,6 +97,8 @@ def search(data : SearchRequest):
     matched = False
     selected_form = None
     for form in all_forms:
+        if "$%&!" in form:
+            continue
         form = form.replace('\n', '')
         print(form, processed_form)
         # everything is the same except for minute and hour
@@ -110,20 +118,40 @@ def search(data : SearchRequest):
         return {"success" : str(matched)}
 
 @app.post('/book/ride')
-def book_ride(data : SearchRequest):
+def book_ride(data : BetterSearchRequest):
     startLocation=data.startLocation
     endLocation=data.endLocation
     time=data.time
+    username=data.username
     processed_form = startLocation + 'ı' + endLocation + 'ı' + time
     try:
         with open("data/database.txt", mode = 'a') as file:
-            file.write('\n' + processed_form)
+            file.write('\n$%&!' + username + '\n' + processed_form)
             return {"success" : "True"}
     except:
         return {"success" : "False"}
 
+@app.post('/confirm/selection')
+def confirm_selection(data : BetterSearchRequest):
+    startLocation=data.startLocation
+    endLocation=data.endLocation
+    time=data.time
+    username=data.username
+    processed_form = startLocation + 'ı' + endLocation + 'ı' + time
+    with open("data/database.txt", mode = 'r') as file:
+        all_forms = file.readlines()
+    for form in all_forms:
+        form = form.replace('\n', '')
+        if form == processed_form:
+            for i, form2 in enumerate(all_forms):
+                x = '$%&!' + username
+                if x in form2:
+                    if all_forms[i + 1].replace('\n', '') == processed_form:
+                        return {"success" : "False", "reason": "Ride already booked"}
+            with open("data/database.txt", mode = 'a') as file:
+                file.write('\n$%&!' + username + '\n' + processed_form)
+                return {"success" : "True"}
 
-
-
+    return {"success" : "False", "reason" : "Ride not found"}
 if __name__ == '__main__':
     uvicorn.run("server:app", host="0.0.0.0", port=8000, reload=True)
