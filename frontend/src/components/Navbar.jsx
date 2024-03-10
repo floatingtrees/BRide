@@ -31,6 +31,18 @@ const Navbar = () => {
     }
   };
 
+  function ToProfilePage() {
+    if (window.localStorage.getItem("isLoggedIn")) {
+      return (
+        <>
+          <li className="p-4">
+            <Link to="/profile">Profile</Link>
+          </li>
+        </>
+      )
+    } 
+  };
+
   return (
     <div className="flex justify-between items-center h-24  mx-auto px-6 text-[#2774AE] shadow-md fixed top-0 w-full bg-white">
       <h1 className="w-full text-3xl font-bold text-[#2774AE] m-4">
@@ -43,9 +55,9 @@ const Navbar = () => {
         <li className="p-4">
           <Link to="/contact">Contact</Link>
         </li>
+        <ToProfilePage />
         <li className="p-4">
           <button onClick={handleClick}>{loggedInText}</button>
-          {/* <Link to="/login">Login</Link> */}
         </li>
       </ul>
       <div onClick={handleNav} className="block md:hidden">
@@ -65,11 +77,12 @@ const Navbar = () => {
           <li className="p-4 border-b">
             <Link to="/">Home</Link>
           </li>
-          <li className="p-4">
+          <li className="p-4 border-b">
             <Link to="/contact">Contact</Link>
           </li>
+            <ToProfilePage />
           <li className="p-4 border-b">
-            <button onClick={handleClick}>{loggedInText}</button>
+            <button onClick={handleClick} className="uppercase">{loggedInText}</button>
           </li>
         </ul>
       </div>
