@@ -5,6 +5,7 @@ import SearchResultPage from "./SearchResult.jsx";
 import LoginPage from "./Login.jsx";
 import SignUpPage from "./Signup.jsx";
 import ScooterSelectPage from "./ScooterSelect.jsx";
+import Contact from "./Contact.jsx";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignUpPage />} />
           <Route path="/select" element={<ScooterSelectPage />} />
+          <Route path="/contact" element={<Contact />} />
         </Routes>
       </Router>
     </div>

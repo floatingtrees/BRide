@@ -1,5 +1,6 @@
 import * as React from "react";
-
+import img from "./assets/Card.jpg";
+import default_img from "./assets/default_card.jpg";
 import Navbar from "./components/Navbar";
 import { useLocation, Link } from "react-router-dom";
 import { Grid } from "@mui/material";
@@ -9,16 +10,9 @@ import ResultCard from "./components/ResultCard";
 
 function SearchResultPage() {
   const location = useLocation();
-  const { date, time, carpool } = location.state;
+  const { start, end, date, time } = location.state;
 
-  function SearchElement() {
-    return (
-      <button>
-        <div>car date: {date}</div>
-        <div>car time:{time}</div>
-      </button>
-    );
-  }
+  // have the start/end/date/time information here
 
   return (
     <>
@@ -28,23 +22,21 @@ function SearchResultPage() {
           <Grid
             container
             spacing={5}
-            style={{ marginTop: "20px" }}
+            style={{ marginTop: "-15px" }}
             columns={16}
           >
+            <ResultCard name="New Scooter!!!" img={default_img} />
             <ResultCard
               name="Bob John"
               location="De Neve Plaza"
               time="10:10 AM"
+              img={img}
             />
             <ResultCard
               name="Bob John"
               location="De Neve Plaza"
               time="10:10 AM"
-            />
-            <ResultCard
-              name="Bob John"
-              location="De Neve Plaza"
-              time="10:10 AM"
+              img={img}
             />
           </Grid>
         </Container>
