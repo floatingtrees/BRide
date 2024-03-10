@@ -30,9 +30,9 @@ function ScooterSelectPage(prop) {
   return (
     <>
       <Navbar />
-      <div className="w-full  px-4 flex flex-row min-h-screen justify-center items-center">
-        <div className="mx-auto grid md:grid-cols-2 sm:grid-col-1 gap-48 px-96">
-          <figure className="max-w-lg">
+      <div className="w-full px-4 flex flex-row min-h-screen justify-center items-center">
+        <div className="mx-auto grid md:grid-cols-2 sm:grid-cols-1 gap-48 px-96 flex-shrink-0">
+          <figure className="max-w-lg ">
             <img
               className="h-auto max-w-full rounded-lg"
               src={seatImage}
