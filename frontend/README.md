@@ -3,6 +3,7 @@
 Tailwind for vite: https://tailwindcss.com/docs/guides/vite
 React-Typed: npm install react-typed --save
 npm install @mui/material @emotion/react @emotion/styled
+npx shadcn-ui@latest add accordion
 
 # Resources
 

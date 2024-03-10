@@ -3,17 +3,20 @@ import React, { useState } from "react";
 import { Label } from "./Label";
 import { Input } from "./Input";
 import { cn } from "../utils/cn";
-import { Grid } from "@mui/material";
-import Container from "@mui/material/Container";
-import { useNavigate } from "react-router-dom";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "./Accordion";
 
 const ContactInfo = () => {
   const handleSubmit = async (e) => {};
 
   return (
     <div className="w-full py-32 px-4">
-      <div className="mx-auto grid md:grid-cols-2">
-        <div className="backdrop-blur-sm max-w-md w-full mx-auto rounded-2xl p-4 md:p-8 shadow-input bg-white">
+      <div className="mx-auto grid md:grid-cols-2 sm:grid-col-1 gap-48 px-48">
+        <div className="backdrop-blur-sm  w-full mx-auto rounded-2xl p-4 md:p-8  bg-white">
           <h2 className="font-bold text-xl text-[#2774AE] dark:text-[#2774AE]">
             Have a question? Contact us!
           </h2>
@@ -65,15 +68,43 @@ const ContactInfo = () => {
             </button>
           </form>
         </div>
-        <div className="pt-24">
-          <Container maxWidth="lg">
-            <Grid
-              container
-              spacing={2}
-              style={{ marginTop: "-15px" }}
-              columns={4}
-            ></Grid>
-          </Container>
+        <div className="backdrop-blur-sm w-full mx-auto rounded-2xl p-4 md:p-8  bg-white text-[#2774AE]">
+          <h1 className="py-4 font-bold text-4xl">FAQs</h1>
+          <Accordion type="single" collapsible>
+            <AccordionItem value="item-1">
+              <AccordionTrigger>Is it legit?</AccordionTrigger>
+              <AccordionContent className="text-black">
+                Yes! Trust your fellow students and scooters! You will be
+                guaranteed to get to class safely!
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="item-2">
+              <AccordionTrigger>
+                How do I make sure I won't get hurt?
+              </AccordionTrigger>
+              <AccordionContent className="text-black">
+                "I find your lack of faith disturbing." - Darth Vader
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="item-3">
+              <AccordionTrigger>
+                How is this website so SEXY? How did you guys do it?
+              </AccordionTrigger>
+              <AccordionContent className="text-black">
+                It's worth 30% of our CS35L grade and we did bad on our
+                midterms.
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="item-4">
+              <AccordionTrigger>
+                Who does the contact us email get sent to? Will it get answered?
+              </AccordionTrigger>
+              <AccordionContent className="text-black">
+                It is sent to Professor Paul Eggert. You will most likely get a
+                angry response to stop emailing him.
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
         </div>
       </div>
     </div>
