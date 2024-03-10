@@ -9,6 +9,7 @@ function Searchbar() {
   const [time, setTime] = useState("");
   const [start, setStart] = useState("");
   const [end, setEnd] = useState("");
+  const [username, setUsername] = useState("");
   const dataToSend = { start: "", end: "", date: "", time: "" };
   const navigate = useNavigate();
 
@@ -42,7 +43,9 @@ function Searchbar() {
 
     // Allow empty value to let user clear the input or type from scratch
     if (!dateRegex.test(date)) {
-      alert("Date must be a valid date in the format of MM/DD/YYYY, such as 04/01/2024")
+      alert(
+        "Date must be a valid date in the format of MM/DD/YYYY, such as 04/01/2024",
+      );
       return;
     }
     const response = await fetch("http://localhost:8000/request", {
@@ -68,13 +71,13 @@ function Searchbar() {
 
   return (
     <>
-      <div className="flex justify-center items-center h-24  px-6 mx-auto rounded-2xl p-4 my-4 bg-white w-full">
-        <form className="bg-white rounded" onSubmit={handleSubmit}>
+      <div className="mx-auto my-4 flex h-24  w-full items-center justify-center rounded-2xl bg-white p-4 px-6">
+        <form className="rounded bg-white" onSubmit={handleSubmit}>
           <div className="flex flex-col md:flex-row md:space-x-2">
             <LabelInputContainer>
               <Label htmlFor="firstname">Arrival Location</Label>
               <Input
-                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                class="focus:shadow-outline w-full appearance-none rounded border px-3 py-2 leading-tight text-gray-700 shadow focus:outline-none"
                 id="start"
                 placeholder="Haines Hall 39"
                 type="text"
@@ -84,7 +87,7 @@ function Searchbar() {
             <LabelInputContainer>
               <Label htmlFor="firstname">Departure Location</Label>
               <Input
-                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                class="focus:shadow-outline w-full appearance-none rounded border px-3 py-2 leading-tight text-gray-700 shadow focus:outline-none"
                 id="end"
                 placeholder="Epicura at Ackerman"
                 type="text"
@@ -94,7 +97,7 @@ function Searchbar() {
             <LabelInputContainer>
               <Label htmlFor="firstname">Departure Date</Label>
               <Input
-                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                class="focus:shadow-outline w-full appearance-none rounded border px-3 py-2 leading-tight text-gray-700 shadow focus:outline-none"
                 id="date"
                 placeholder="MM/DD/YYYY"
                 type="text"
@@ -104,7 +107,7 @@ function Searchbar() {
             <LabelInputContainer>
               <Label htmlFor="lastname">Departure Time</Label>
               <Input
-                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                class="focus:shadow-outline w-full appearance-none rounded border px-3 py-2 leading-tight text-gray-700 shadow focus:outline-none"
                 id="time"
                 placeholder="HH:MM"
                 maxLength="5"
@@ -113,7 +116,7 @@ function Searchbar() {
               />
             </LabelInputContainer>
             <button
-              className="mt-3.5 group/btn w-96 text-white h-10 font-bold bg-[#2774AE] btn overflow-hidden rounded-xl uppercase duration-300 hover:-translate-y-2 hover:shadow-lg"
+              className="group/btn btn mt-3.5 h-10 w-96 overflow-hidden rounded-xl bg-[#2774AE] font-bold uppercase text-white duration-300 hover:-translate-y-2 hover:shadow-lg"
               type="submit"
             >
               Go
@@ -127,7 +130,7 @@ function Searchbar() {
 
 const LabelInputContainer = ({ children, className }) => {
   return (
-    <div className={cn("flex flex-col w-full", className)}>{children}</div>
+    <div className={cn("flex w-full flex-col", className)}>{children}</div>
   );
 };
 

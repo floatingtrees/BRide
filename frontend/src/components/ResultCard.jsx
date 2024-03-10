@@ -8,10 +8,30 @@ import { useLocation, Link } from "react-router-dom";
 import { Grid } from "@mui/material";
 
 function ResultCard(props) {
-  
+
+  const bookRide = async (e) => {
+    e.preventDefault()
+    const response = await fetch("http://localhost:8000/book/ride", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        startLocation: start,
+        endLocation: end,
+        time: date + time,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success === "True") {
+          console.log(data.success);
+        });
+  }
+
   function GetCardContent() {
 
-    if(props.name === "New Scooter!!!") {
+    if (props.name === "New Scooter!!!") {
       return (
         <>
           <Typography gutterBottom variant="h5" component="div">
@@ -22,7 +42,7 @@ function ResultCard(props) {
             <br />
             <b>Share with someone!</b>
           </Typography>
-        </> 
+        </>
       )
     }
     return (
