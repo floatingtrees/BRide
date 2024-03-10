@@ -5,8 +5,3 @@ tmp/
 frontend/node_modules
 venv/
 Venv2/
-<<<<<<< HEAD
-=======
-data/
-__pycache__/
->>>>>>> 64ad580f28e6f5317d626e944454d4f5e9b6d57f
