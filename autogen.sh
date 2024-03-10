@@ -22,6 +22,9 @@ else
 	cd ../..
 fi
 
+kill $( lsof -i:5173 -t )
+kill $( lsof -i:8000 -t )
+
 cd frontend && npm run dev &
 
 cd backend && python3 server.py
