@@ -14,10 +14,10 @@ app = FastAPI()
 # Add CORS to the application
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  
+    allow_origins=["*"],
     allow_credentials=True,
-    allow_methods=["*"], 
-    allow_headers=["*"],  
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 # Data structures for what each request sends
@@ -27,8 +27,8 @@ class SearchRequest(BaseModel):
     time: str
 
 class UsernamePassword(BaseModel):
-    username : str 
-    password : str 
+    username : str
+    password : str
 
 @app.post('/create/account')
 def create_account(data : UsernamePassword):
@@ -44,7 +44,7 @@ def create_account(data : UsernamePassword):
     with open("data/Usernames.txt", mode = 'a') as file:
         file.write('\n' + username)
 
-    
+
     with open("data/Passwords.txt", mode = 'a') as file:
         file.write('\n' + hashlib.sha256(password.encode()).hexdigest())
     with open("data/Passwords2.txt", mode = 'a') as file:
@@ -103,7 +103,7 @@ def search(data : SearchRequest):
                 selected_form = form
                 break
 
-    if matched:
+    if selected_form is not None:
         selected_form = selected_form.split('ı')
         return {"success" : str(matched), "startLocation" : selected_form[0], "endLocation" : selected_form[1], "time" : selected_form[2]}
     else:
@@ -111,19 +111,19 @@ def search(data : SearchRequest):
 
 @app.post('/book/ride')
 def book_ride(data : SearchRequest):
+    startLocation=data.startLocation
+    endLocation=data.endLocation
+    time=data.time
+    processed_form = startLocation + 'ı' + endLocation + 'ı' + time
+    try:
+        with open("data/database.txt", mode = 'a') as file:
+            file.write('\n' + processed_form)
+            return {"success" : "True"}
+    except:
+        return {"success" : "False"}
 
-    with open("data/database.txt", mode = 'a') as file:
-        file.write('\n' + processed_form)
 
-    if matched:
-        selected_form = selected_form.split('ı')
-        return {"success" : str(matched), "startLocation" : selected_form[0], "endLocation" : selected_form[1], "time" : selected_form[2]}
-    else:
-        return {"success" : str(matched)}
-    
+
 
 if __name__ == '__main__':
     uvicorn.run("server:app", host="0.0.0.0", port=8000, reload=True)
-
-
-

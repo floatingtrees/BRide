@@ -8,9 +8,8 @@ import { useLocation, Link } from "react-router-dom";
 import { Grid } from "@mui/material";
 
 function ResultCard(props) {
-
   const bookRide = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     const response = await fetch("http://localhost:8000/book/ride", {
       method: "POST",
       headers: {
@@ -26,11 +25,11 @@ function ResultCard(props) {
       .then((data) => {
         if (data.success === "True") {
           console.log(data.success);
-        });
-  }
+        }
+      });
+  };
 
   function GetCardContent() {
-
     if (props.name === "New Scooter!!!") {
       return (
         <>
@@ -43,7 +42,7 @@ function ResultCard(props) {
             <b>Share with someone!</b>
           </Typography>
         </>
-      )
+      );
     }
     return (
       <>
@@ -61,7 +60,6 @@ function ResultCard(props) {
         </Typography>
       </>
     );
-
   }
 
   return (
