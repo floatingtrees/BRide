@@ -7,6 +7,7 @@ import SignUpPage from "./Signup.jsx";
 import ScooterSelectPage from "./ScooterSelect.jsx";
 import Contact from "./Contact.jsx";
 import { Toaster, toast } from "sonner";
+import ProfilePage from "./ProfilePage.jsx";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/signup" element={<SignUpPage />} />
           <Route path="/select" element={<ScooterSelectPage />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/profile" element={<ProfilePage />} />
         </Routes>
       </Router>
     </div>
