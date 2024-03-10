@@ -37,7 +37,7 @@ function Searchbar() {
 
     // Allow empty value to let user clear the input or type from scratch
     if (!dateRegex.test(date)) {
-      alert("Date must be in the format of MM/DD/YYYY, such as 4/1/2024")
+      alert("Date must be a valid date in the format of MM/DD/YYYY, such as 04/01/2024")
       return;
 
     }

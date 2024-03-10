@@ -82,13 +82,7 @@ export default function LoginPage() {
                   <span className="text-black text-sm">Sign Up</span>
                 </button>
               </Link>
-              <button
-                className="relative group/btn flex space-x-2 items-center justify-start px-4 w-full rounded-md h-10 font-medium shadow-input bg-white hover:-translate-y-1 transform transition duration-200 hover:shadow-md"
-                type="submit"
-              >
-                <IconBrandGoogle className="h-4 w-4 text-black" />
-                <span className="text-black text-sm">Google</span>
-              </button>
+
             </div>
           </form>
         </div>
