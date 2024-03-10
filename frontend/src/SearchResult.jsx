@@ -13,15 +13,11 @@ function SearchResultPage() {
   const { start, end, date, time } = location.state;
 
   // have the start/end/date/time information here
-  
 
   return (
     <>
       <div className="pt-24">
         <Searchbar />
-        <h1 className="flex justify-center text-[#2363b0] md:text-7xl sm:tetx-6xl text-4xl font-bold md:py-6">
-          Search Results
-        </h1>
         <Container maxWidth="lg">
           <Grid
             container
@@ -29,10 +25,7 @@ function SearchResultPage() {
             style={{ marginTop: "-15px" }}
             columns={16}
           >
-            <ResultCard
-              name="New Scooter!!!"
-              img={default_img}
-            />
+            <ResultCard name="New Scooter!!!" img={default_img} />
             <ResultCard
               name="Bob John"
               location="De Neve Plaza"
