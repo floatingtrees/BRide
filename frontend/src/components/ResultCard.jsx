@@ -20,7 +20,7 @@ function ResultCard(props) {
           <Typography variant="body" color="text.secondary">
             <b>Create a new ride!</b>
             <br />
-            <b>share with someone!</b>
+            <b>Share with someone!</b>
           </Typography>
         </> 
       )

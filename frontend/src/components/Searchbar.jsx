@@ -9,18 +9,18 @@ function Searchbar() {
   const [time, setTime] = useState("");
   const [start, setStart] = useState("");
   const [end, setEnd] = useState("");
-  const dataToSend = {startLocation:"", endLocation:"", date:"", time:""}
+  const dataToSend = {start:"", end:"", date:"", time:""}
   const navigate = useNavigate();
 
-  function retrieveData(data) {
+  function retrieveData() {
     //if we have multiple queries returned; for later
     // dataToSend.startLocation=data.startLocation;
     // dataToSend.endLocation=data.endLocation;
     // dataToSend.time=data.time.substring(data.time.length - 5);
     // dataToSend.date=data.time.substring(0,data.time.length-5);
 
-    dataToSend.startLocation=start;
-    dataToSend.endLocation=end;
+    dataToSend.start=start;
+    dataToSend.end=end;
     dataToSend.time=time;
     dataToSend.date=date;
   }
@@ -56,7 +56,6 @@ function Searchbar() {
       })
     .then(response => response.json())
     .then(data => {
-      console.log(data);
       if (data.success === "True") {
         retrieveData(data);
       }
