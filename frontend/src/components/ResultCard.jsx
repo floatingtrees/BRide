@@ -6,9 +6,44 @@ import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
 import { useLocation, Link } from "react-router-dom";
 import { Grid } from "@mui/material";
-import img from "../assets/Card.jpg";
 
 function ResultCard(props) {
+  
+  function GetCardContent() {
+
+    if(props.name === "New Scooter!!!") {
+      return (
+        <>
+          <Typography gutterBottom variant="h5" component="div">
+            {props.name}
+          </Typography>
+          <Typography variant="body" color="text.secondary">
+            <b>Create a new ride!</b>
+            <br />
+            <b>share with someone!</b>
+          </Typography>
+        </> 
+      )
+    }
+    return (
+      <>
+        <Typography gutterBottom variant="h5" component="div">
+          {props.name}
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+          Join {props.name}'s Ride!
+          <br />
+          <b>Location: </b>
+          {props.location}
+          <br />
+          <b>Time: </b>
+          {props.time}
+        </Typography>
+      </>
+    );
+
+  }
+
   return (
     <>
       <Grid item xs={12} sm={4} ms={4} className="relative">
@@ -25,22 +60,11 @@ function ResultCard(props) {
               <CardMedia
                 component="img"
                 height="140"
-                image={img}
+                image={props.img}
                 alt="green iguana"
               />
               <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                  {props.name}
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  Join {props.name}'s Ride!
-                  <br />
-                  <b>Location: </b>
-                  {props.location}
-                  <br />
-                  <b>Time: </b>
-                  {props.time}
-                </Typography>
+                <GetCardContent />
               </CardContent>
             </CardActionArea>
           </Card>
