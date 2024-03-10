@@ -1,4 +1,6 @@
-#!/Users/floatingtrees/Desktop/BRide/backend/venv2/bin/python3
+#!/bin/sh
+'''exec' "/Users/fuyiyang/Fuyi/UCLA/Freshman/Winter 2023/CS35L/BRide/backend/venv2/bin/python3.12" "$0" "$@"
+' '''
 # -*- coding: utf-8 -*-
 import re
 import sys
