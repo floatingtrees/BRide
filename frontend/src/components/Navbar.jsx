@@ -20,15 +20,14 @@ const Navbar = () => {
   };
 
   const handleClick = () => {
-    if(loggedInText === "Login") {
-      navigate('/login');
-    }
-    else {
+    if (loggedInText === "Login") {
+      navigate("/login");
+    } else {
       window.localStorage.removeItem("isLoggedIn");
       window.localStorage.removeItem("email");
       window.localStorage.removeItem("password");
       setLoggedIn("Login");
-      navigate('/');
+      navigate("/");
     }
   };
 
@@ -41,7 +40,9 @@ const Navbar = () => {
         <li className="p-4">
           <Link to="/">Home</Link>
         </li>
-        <li className="p-4">Contact</li>
+        <li className="p-4">
+          <Link to="/contact">Contact</Link>
+        </li>
         <li className="p-4">
           <button onClick={handleClick}>{loggedInText}</button>
           {/* <Link to="/login">Login</Link> */}
@@ -64,7 +65,9 @@ const Navbar = () => {
           <li className="p-4 border-b">
             <Link to="/">Home</Link>
           </li>
-          <li className="p-4">Contact</li>
+          <li className="p-4">
+            <Link to="/contact">Contact</Link>
+          </li>
           <li className="p-4 border-b">
             <button onClick={handleClick}>{loggedInText}</button>
           </li>
