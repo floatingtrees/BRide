@@ -6,3 +6,4 @@ frontend/node_modules
 venv/
 Venv2/
 data/
+__pycache__/
