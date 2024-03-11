@@ -12,7 +12,7 @@ import ProfilePage from "./ProfilePage.jsx";
 function App() {
   return (
     <div>
-      <Toaster />
+      <Toaster position="top-center" richColors closeButton />
       <Router>
         <Routes>
           <Route path="/" element={<LandingPage />} />
