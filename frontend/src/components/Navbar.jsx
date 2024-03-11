@@ -36,16 +36,16 @@ const Navbar = () => {
       if(!nav) {
         return (
           <>
-            <li className="hover:underline p-4">
-              <Link to="/profile">Profile</Link>
+            <li className="p-4">
+              <Link to="/profile" className="hover:underline">Profile</Link>
             </li>
           </>
         )
       }
       return (
         <>
-          <li className="hover:underline py-8 px-4">
-            <Link to="/profile">Profile</Link>
+          <li className="py-8 px-4">
+            <Link to="/profile" className="hover:underline">Profile</Link>
           </li>
         </>
       )
@@ -58,11 +58,11 @@ const Navbar = () => {
         <Link to="/">BRide.</Link>
       </h1>
       <ul className="hidden md:flex">
-        <li className="hover:underline py-8 px-4">
-          <Link to="/">Home</Link>
+        <li className="py-8 px-4">
+          <Link to="/" className="hover:underline">Home</Link>
         </li>
-        <li className="hover:underline py-8 px-4">
-          <Link to="/contact">Contact</Link>
+        <li className="py-8 px-4">
+          <Link to="/contact" className="hover:underline">Contact</Link>
         </li>
         <ToProfilePage />
         <li className="text-white p-4">
@@ -83,11 +83,11 @@ const Navbar = () => {
           <Link to="/">BRide.</Link>
         </h1>
         <ul className="uppercase p-4">
-          <li className="hover:underline p-4 border-b">
-            <Link to="/">Home</Link>
+          <li className="p-4 border-b">
+            <Link to="/" className="hover:underline">Home</Link>
           </li>
-          <li className="hover:underline p-4 border-b">
-            <Link to="/contact">Contact</Link>
+          <li className="p-4 border-b">
+            <Link to="/contact" className="hover:underline">Contact</Link>
           </li>
             <ToProfilePage />
           <li className="p-4 border-b">
