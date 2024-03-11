@@ -3,8 +3,20 @@ import use from "../assets/Use.gif";
 
 const HowTo = () => {
   const paragraphStyle = {
-    caretColor: "transparent",
+    caretColor: 'transparent',
+    maxWidth: "70%",
+    fontSize: "1rem",
+    lineHeight: "1.6",
+    marginLeft: "5rem",
   };
+  const headingStyle = {
+    caretColor: 'transparent',
+    fontSize: "2.5rem",
+    fontWeight: "bold",
+    marginBottom: "1rem",
+    marginLeft: "5rem",
+  };
+  
   return (
     <div className="w-full bg-[#8BB8E8] px-4 py-16">
       <div className="mx-auto grid md:grid-cols-2">
@@ -14,7 +26,7 @@ const HowTo = () => {
           </p>
           <h1
             className="fond-bold py-2 text-2xl sm:text-3xl md:text-4xl"
-            style={paragraphStyle}
+            style={headingStyle}
           >
             Fast and easy!
           </h1>
