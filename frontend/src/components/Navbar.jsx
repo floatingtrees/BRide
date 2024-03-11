@@ -33,9 +33,18 @@ const Navbar = () => {
 
   function ToProfilePage() {
     if (window.localStorage.getItem("isLoggedIn")) {
+      if(!nav) {
+        return (
+          <>
+            <li className="hover:underline p-4">
+              <Link to="/profile">Profile</Link>
+            </li>
+          </>
+        )
+      }
       return (
         <>
-          <li className="p-4">
+          <li className="hover:underline py-8 px-4">
             <Link to="/profile">Profile</Link>
           </li>
         </>
@@ -49,15 +58,15 @@ const Navbar = () => {
         <Link to="/">BRide.</Link>
       </h1>
       <ul className="hidden md:flex">
-        <li className="p-4">
+        <li className="hover:underline py-8 px-4">
           <Link to="/">Home</Link>
         </li>
-        <li className="p-4">
+        <li className="hover:underline py-8 px-4">
           <Link to="/contact">Contact</Link>
         </li>
         <ToProfilePage />
-        <li className="p-4">
-          <button onClick={handleClick}>{loggedInText}</button>
+        <li className="text-white p-4">
+          <button onClick={handleClick} className="p-4 bg-blue-500 rounded-full">{loggedInText}</button>
         </li>
       </ul>
       <div onClick={handleNav} className="block md:hidden">
@@ -74,15 +83,15 @@ const Navbar = () => {
           <Link to="/">BRide.</Link>
         </h1>
         <ul className="uppercase p-4">
-          <li className="p-4 border-b">
+          <li className="hover:underline p-4 border-b">
             <Link to="/">Home</Link>
           </li>
-          <li className="p-4 border-b">
+          <li className="hover:underline p-4 border-b">
             <Link to="/contact">Contact</Link>
           </li>
             <ToProfilePage />
           <li className="p-4 border-b">
-            <button onClick={handleClick} className="uppercase">{loggedInText}</button>
+            <button onClick={handleClick} className="uppercase hover:underline ">{loggedInText}</button>
           </li>
         </ul>
       </div>
