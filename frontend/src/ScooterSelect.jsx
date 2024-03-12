@@ -6,6 +6,7 @@ import { Toaster, toast } from "sonner";
 import { useNavigate } from "react-router-dom";
 
 function ScooterSelectPage(prop) {
+
   const [frontBack, setFrontBack] = useState("Front Seat");
   const [seatImage, setSeatImage] = useState(frontSeatImage);
   const navigate = useNavigate();
@@ -21,6 +22,12 @@ function ScooterSelectPage(prop) {
   }
 
   const handleSubmit = async (e) => {
+    if(!window.localStorage.getItem("isLoggedIn")) {
+      toast.error(
+        "Ooops! You cannot confirm a reservation without logging in!",
+      );
+      return;
+    }
     e.preventDefault();
 
     const response = await fetch("http://localhost:8000/book/ride", {
@@ -41,7 +48,6 @@ function ScooterSelectPage(prop) {
         if (data.success === "True") {
         }
       });
-
     toast.success(
       "Your ride has successfully been booked! Check your email for more info!",
     );
