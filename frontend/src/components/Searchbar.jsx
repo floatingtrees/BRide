@@ -51,6 +51,9 @@ function Searchbar() {
       );
       return;
     }
+    window.localStorage.setItem("time", date + time);
+    window.localStorage.setItem("startLocation", start);
+    window.localStorage.setItem("endLocation", end);
     const response = await fetch("http://localhost:8000/request", {
       method: "POST",
       headers: {

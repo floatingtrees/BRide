@@ -20,18 +20,39 @@ function ScooterSelectPage(prop) {
     }
   }
 
-  function confirmRide() {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const response = await fetch("http://localhost:8000/book/ride", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        startLocation: window.localStorage.getItem("startLocation"),
+
+        endLocation: window.localStorage.getItem("endLocation"),
+        time: window.localStorage.getItem("time"),
+        username: window.localStorage.getItem("email"),
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success === "True") {
+        }
+      });
+
     toast.success(
       "Your ride has successfully been booked! Check your email for more info!",
     );
-    navigate("/");
-  }
+    //navigate("/");
+  };
 
   return (
     <>
       <Navbar />
-      <div className="w-full px-4 flex flex-row min-h-screen justify-center items-center">
-        <div className="mx-auto grid md:grid-cols-2 sm:grid-cols-1 gap-48 px-96 flex-shrink-0">
+      <div className="flex min-h-screen w-full flex-row items-center justify-center px-4">
+        <div className="mx-auto grid flex-shrink-0 gap-48 px-96 sm:grid-cols-1 md:grid-cols-2">
           <figure className="max-w-lg ">
             <img
               className="h-auto max-w-full rounded-lg"
@@ -39,24 +60,24 @@ function ScooterSelectPage(prop) {
               alt="scooter"
             />
           </figure>
-          <div className="flex flex-row justify-center items-center">
-            <label className="inline-flex items-center cursor-pointer">
+          <div className="flex flex-row items-center justify-center">
+            <label className="inline-flex cursor-pointer items-center">
               <input
                 type="checkbox"
                 value=""
-                className="sr-only peer"
+                className="peer sr-only"
                 onClick={toggleChangeSeat}
               />
-              <div className="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+              <div className="peer relative h-6 w-11 rounded-full bg-gray-200 after:absolute after:start-[2px] after:top-[2px] after:h-5 after:w-5 after:rounded-full after:border after:border-gray-300 after:bg-white after:transition-all after:content-[''] peer-checked:bg-blue-600 peer-checked:after:translate-x-full peer-checked:after:border-white peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rtl:peer-checked:after:-translate-x-full dark:border-gray-600 dark:bg-gray-700 dark:peer-focus:ring-blue-800"></div>
               <span className="ms-3 text-sm font-bold text-[#2774AE]">
                 {frontBack}
               </span>
             </label>
-            <div className="px-12 flex justify-center items-center content-center">
+            <div className="flex content-center items-center justify-center px-12">
               <button
-                className="group/btn btn mt-3.5 px-4 h-10 overflow-hidden rounded-xl bg-[#2774AE] font-bold uppercase text-white duration-300 hover:-translate-y-2 hover:shadow-lg"
+                className="group/btn btn mt-3.5 h-10 overflow-hidden rounded-xl bg-[#2774AE] px-4 font-bold uppercase text-white duration-300 hover:-translate-y-2 hover:shadow-lg"
                 type="submit"
-                onClick={confirmRide}
+                onClick={handleSubmit}
               >
                 Confirm
               </button>

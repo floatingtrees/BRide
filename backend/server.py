@@ -119,6 +119,7 @@ def search(data : SearchRequest):
 
 @app.post('/book/ride')
 def book_ride(data : BetterSearchRequest):
+    print("HI")
     startLocation=data.startLocation
     endLocation=data.endLocation
     time=data.time
