@@ -10,9 +10,8 @@ import ResultCard from "./components/ResultCard";
 
 function SearchResultPage() {
   const location = useLocation();
-
+  console.log(window.localStorage.getItem("query_result_start").start);
   const { start, end, date, time } = location.state;
-
   // have the start/end/date/time information here
 
   return (
@@ -28,9 +27,12 @@ function SearchResultPage() {
           >
             <ResultCard name="New Scooter!!!" img={default_img} />
             <ResultCard
-              name={window.localStorage.getItem("query_result").username}
-              location={window.localStorage.getItem("query_result").start}
-              time={window.localStorage.getItem("query_result").time}
+              name={
+                window.localStorage.getItem("query_result_orderer_username")
+                  .username
+              }
+              location={window.localStorage.getItem("query_result_start").start}
+              time={window.localStorage.getItem("query_result_time").time}
               img={img}
             />
             <ResultCard

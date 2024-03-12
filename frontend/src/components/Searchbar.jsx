@@ -71,10 +71,17 @@ function Searchbar() {
         if (data.success === "True") {
           retrieveData(data);
         }
-        window.localStorage.setItem("query_result", data);
-        console.log(dataToSend);
+        window.localStorage.setItem("query_result_success", data.success);
+        window.localStorage.setItem("query_result_start", data.startLocation);
+        window.localStorage.setItem("query_result_end", data.endLocation);
+        window.localStorage.setItem("query_result_time", data.time);
+        window.localStorage.setItem(
+          "query_result_orderer_username",
+          data.orderer_username,
+        );
+        console.log(window.localStorage.getItem("query_result_time"));
+        navigate("/search", { state: dataToSend });
       });
-    navigate("/search", { state: dataToSend });
   };
 
   return (

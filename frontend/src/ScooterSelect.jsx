@@ -45,7 +45,7 @@ function ScooterSelectPage(prop) {
     toast.success(
       "Your ride has successfully been booked! Check your email for more info!",
     );
-    //navigate("/");
+    navigate("/");
   };
 
   return (
