@@ -10,11 +10,21 @@ import ResultCard from "./components/ResultCard";
 import { useEffect, useState } from "react";
 
 function SearchResultPage() {
-  const [date, setDate] = useState("");
-  const [time, setTime] = useState("");
-  const [username, setUsername] = useState("");
-  const [start, setStart] = useState("");
-  const [end, setEnd] = useState("");
+  const [date, setDate] = useState(
+    window.localStorage.getItem("query_result_time").slice(0, -5),
+  );
+  const [time, setTime] = useState(
+    window.localStorage.getItem("query_result_time").slice(0, -5),
+  );
+  const [username, setUsername] = useState(
+    window.localStorage.getItem("query_result_orderer_username"),
+  );
+  const [start, setStart] = useState(
+    window.localStorage.getItem("query_result_start"),
+  );
+  const [end, setEnd] = useState(
+    window.localStorage.getItem("query_result_end"),
+  );
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -24,8 +34,6 @@ function SearchResultPage() {
       setStart(window.localStorage.getItem("query_result_start"));
       setEnd(window.localStorage.getItem("query_result_end"));
     }, 1000); // 1000 milliseconds = 1 second
-
-    return () => clearTimeout(timer); // Cleanup the timer
   }, []);
   // have the start/end/date/time information here
 
