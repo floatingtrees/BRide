@@ -336,7 +336,7 @@ def get_formatted_HTML(username, from_location, to_location, leave_time):
                     <td class="wrapper">
                     <h1 class="bride">BRide.</h1>
                     <p>Hi """ + username + """!</p>
-                    <p>The BRide you booked at """ + leave_time + """ has found a match! Please check your account for more information!</p>
+                    <p>The BRide you booked at <b>""" + leave_time + """</b> leaving at <b>""" + from_location + """</b> going to <b>""" + to_location + """</b> has found a match! Please check your account for more information!</p>
                     <img src="https://cdn.dribbble.com/users/3220962/screenshots/6248233/_8.gif" class="bear-gif">
                     <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
                         <tbody>
@@ -395,3 +395,4 @@ def send_email(username, from_location, to_location, leave_time):
     "subject": "Your BRide at " + leave_time + " is Ready!",
     "html": get_formatted_HTML(username, from_location, to_location, leave_time)})
 
+send_email("cock", "your mom's house", "egger's house", "4:20 PM")
