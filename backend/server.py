@@ -44,8 +44,9 @@ def create_account(data : UsernamePassword):
 
     with open("data/Usernames.txt", mode = 'r') as file:
         all_forms = file.readlines()
-        if username in all_forms:
-            return {"message" : "duplicate username"}
+        for name in all_forms:
+            if username in name:
+                return {"message" : "duplicate username"}
 
     with open("data/Usernames.txt", mode = 'a') as file:
         file.write('\n' + username)
@@ -135,6 +136,7 @@ def book_ride(data : BetterSearchRequest):
     except:
         return {"success" : "False"}
 
+
 @app.post('/confirm/selection')
 def confirm_selection(data : BetterSearchRequest):
     startLocation=data.startLocation
@@ -155,7 +157,21 @@ def confirm_selection(data : BetterSearchRequest):
             with open("data/database.txt", mode = 'a') as file:
                 file.write('\n$%&!' + username + '\n' + processed_form)
                 return {"success" : "True"}
-
     return {"success" : "False", "reason" : "Ride not found"}
+
+@app.post('/reservations')
+def find_reservations_in_their_sleep(data: BetterSearchRequest):
+    username=data.username
+    with open("data/database.txt", mode = 'r') as phile:
+        all_forms = phile.readlines()
+    reservations = []
+    for i, form in enumerate(all_forms):
+        if '$%&!' in form:
+            if form[4:] == username:
+                reservations.append(form)
+    return reservations
+
+
+
 if __name__ == '__main__':
     uvicorn.run("server:app", host="0.0.0.0", port=8000, reload=True)
