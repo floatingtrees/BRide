@@ -31,21 +31,42 @@ const Navbar = () => {
     }
   };
 
+  function ToProfilePage() {
+    if (window.localStorage.getItem("isLoggedIn")) {
+      if(!nav) {
+        return (
+          <>
+            <li className="p-4">
+              <Link to="/profile" className="hover:underline">Profile</Link>
+            </li>
+          </>
+        )
+      }
+      return (
+        <>
+          <li className="py-8 px-4">
+            <Link to="/profile" className="hover:underline">Profile</Link>
+          </li>
+        </>
+      )
+    } 
+  };
+
   return (
     <div className="flex justify-between items-center h-24  mx-auto px-6 text-[#2774AE] shadow-md fixed top-0 w-full bg-white">
       <h1 className="w-full text-3xl font-bold text-[#2774AE] m-4">
         <Link to="/">BRide.</Link>
       </h1>
       <ul className="hidden md:flex">
-        <li className="p-4">
-          <Link to="/">Home</Link>
+        <li className="py-8 px-4">
+          <Link to="/" className="hover:underline">Home</Link>
         </li>
-        <li className="p-4">
-          <Link to="/contact">Contact</Link>
+        <li className="py-8 px-4">
+          <Link to="/contact" className="hover:underline">Contact</Link>
         </li>
-        <li className="p-4">
-          <button onClick={handleClick}>{loggedInText}</button>
-          {/* <Link to="/login">Login</Link> */}
+        <ToProfilePage />
+        <li className="text-white p-4">
+          <button onClick={handleClick} className="p-4 bg-blue-500 rounded-full">{loggedInText}</button>
         </li>
       </ul>
       <div onClick={handleNav} className="block md:hidden">
@@ -63,13 +84,14 @@ const Navbar = () => {
         </h1>
         <ul className="uppercase p-4">
           <li className="p-4 border-b">
-            <Link to="/">Home</Link>
-          </li>
-          <li className="p-4">
-            <Link to="/contact">Contact</Link>
+            <Link to="/" className="hover:underline">Home</Link>
           </li>
           <li className="p-4 border-b">
-            <button onClick={handleClick}>{loggedInText}</button>
+            <Link to="/contact" className="hover:underline">Contact</Link>
+          </li>
+            <ToProfilePage />
+          <li className="p-4 border-b">
+            <button onClick={handleClick} className="uppercase hover:underline ">{loggedInText}</button>
           </li>
         </ul>
       </div>

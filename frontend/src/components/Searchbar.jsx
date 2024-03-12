@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Label } from "./Label";
 import { Input } from "./Input";
 import { cn } from "../utils/cn";
+import { Toaster, toast } from "sonner";
 
 function Searchbar() {
   const [date, setDate] = useState("");
@@ -34,7 +35,9 @@ function Searchbar() {
 
     // Allow empty value to let user clear the input or type from scratch
     if (!timeRegex.test(time)) {
-      alert("Time must be in the format of HH:MM, such as 09:30");
+      toast.warning(
+        "Date must be a valid date in the format of MM/DD/YYYY, such as 04/01/2024",
+      );
       return;
     }
     const dateRegex =
@@ -43,7 +46,7 @@ function Searchbar() {
 
     // Allow empty value to let user clear the input or type from scratch
     if (!dateRegex.test(date)) {
-      alert(
+      toast.warning(
         "Date must be a valid date in the format of MM/DD/YYYY, such as 04/01/2024",
       );
       return;
