@@ -1,7 +1,7 @@
 #!/bin/bash
 
 cd backend
-rm venv2 -rf
+
 python3 -m venv venv2
 source venv2/bin/activate
 pip3 install fastapi
