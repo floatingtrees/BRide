@@ -7,11 +7,26 @@ import { Grid } from "@mui/material";
 import Container from "@mui/material/Container";
 import Searchbar from "./components/Searchbar";
 import ResultCard from "./components/ResultCard";
+import { useEffect, useState } from "react";
 
 function SearchResultPage() {
-  const location = useLocation();
-  console.log(window.localStorage.getItem("query_result_start").start);
-  const { start, end, date, time } = location.state;
+  const [date, setDate] = useState("");
+  const [time, setTime] = useState("");
+  const [username, setUsername] = useState("");
+  const [start, setStart] = useState("");
+  const [end, setEnd] = useState("");
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setTime(window.localStorage.getItem("query_result_time").slice(-5));
+      setDate(window.localStorage.getItem("query_result_time").slice(0, -5));
+      setUsername(window.localStorage.getItem("query_result_orderer_username"));
+      setStart(window.localStorage.getItem("query_result_start"));
+      setEnd(window.localStorage.getItem("query_result_end"));
+    }, 1000); // 1000 milliseconds = 1 second
+
+    return () => clearTimeout(timer); // Cleanup the timer
+  }, []);
   // have the start/end/date/time information here
 
   return (
@@ -22,23 +37,18 @@ function SearchResultPage() {
           <Grid
             container
             spacing={5}
-            style={{ marginTop: "-15px" }}
+            style={{ marginTop: "-15px", marginLeft: "240px" }}
             columns={16}
           >
             <ResultCard name="New Scooter!!!" img={default_img} />
             <ResultCard
-              name={
-                window.localStorage.getItem("query_result_orderer_username")
-                  .username
-              }
-              location={window.localStorage.getItem("query_result_start").start}
-              time={window.localStorage.getItem("query_result_time").time}
-              img={img}
-            />
-            <ResultCard
-              name="Bob John"
-              location="De Neve Plaza"
-              time="10:10 AM"
+              name={window.localStorage.getItem(
+                "query_result_orderer_username",
+              )}
+              start={start}
+              end={end}
+              date={date}
+              time={time}
               img={img}
             />
           </Grid>

@@ -99,7 +99,7 @@ def search(data : SearchRequest):
     orderer_username = None
     for i, form in enumerate(all_forms):
         if "$%&!" in form:
-            orderer_username = form[3:]
+            orderer_username = form[4:]
             continue
         form = form.replace('\n', '')
         print(form, processed_form)
