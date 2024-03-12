@@ -80,7 +80,9 @@ function Searchbar() {
           data.orderer_username,
         );
         console.log(window.localStorage.getItem("query_result_time"));
-        navigate("/search", { state: dataToSend });
+        navigate("/search");
+        window.location.reload();
+        navigate("/search");
       });
   };
 

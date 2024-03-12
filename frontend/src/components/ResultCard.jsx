@@ -33,6 +33,7 @@ function ResultCard(props) {
     if (props.name === "New Scooter!!!") {
       return (
         <>
+          <br />
           <Typography gutterBottom variant="h5" component="div">
             {props.name}
           </Typography>
@@ -40,7 +41,9 @@ function ResultCard(props) {
             <b>Create a new ride!</b>
             <br />
             <b>Share with someone!</b>
+            <br />
           </Typography>
+          <br />
         </>
       );
     }
@@ -52,8 +55,14 @@ function ResultCard(props) {
         <Typography variant="body2" color="text.secondary">
           Join {props.name}'s Ride!
           <br />
-          <b>Location: </b>
-          {props.location}
+          <b> Start: </b>
+          {props.start}
+          <br />
+          <b> Destination: </b>
+          {props.end}
+          <br />
+          <b> Date: </b>
+          {props.date}
           <br />
           <b>Time: </b>
           {props.time}
