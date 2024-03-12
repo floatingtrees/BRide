@@ -80,6 +80,7 @@ function Searchbar() {
           data.orderer_username,
         );
         console.log(window.localStorage.getItem("query_result_time"));
+        window.location.reload();
         navigate("/search");
       });
   };
