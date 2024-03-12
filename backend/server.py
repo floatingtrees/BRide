@@ -32,6 +32,9 @@ class BetterSearchRequest(BaseModel):
     time: str
     username : str
 
+class BaseUsername(BaseModel):
+    username : str
+
 class UsernamePassword(BaseModel):
     username : str
     password : str
@@ -160,15 +163,20 @@ def confirm_selection(data : BetterSearchRequest):
     return {"success" : "False", "reason" : "Ride not found"}
 
 @app.post('/reservations')
-def find_reservations_in_their_sleep(data: BetterSearchRequest):
+def find_reservations_in_their_sleep(data: BaseUsername):
     username=data.username
     with open("data/database.txt", mode = 'r') as phile:
         all_forms = phile.readlines()
     reservations = []
     for i, form in enumerate(all_forms):
         if '$%&!' in form:
-            if form[4:] == username:
-                reservations.append(form)
+            print(repr(form[4:]), repr(username))
+            if form[4:].replace('\n', '') == username:
+                selected_form = all_forms[i + 1].split('ı')
+                test = {"startLocation" : selected_form[0], "endLocation" : selected_form[1],
+                    "time" : selected_form[2]}
+                reservations.append(test)
+    print(reservations)
     return reservations
 
 
