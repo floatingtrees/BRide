@@ -33,24 +33,28 @@ const Navbar = () => {
 
   function ToProfilePage() {
     if (window.localStorage.getItem("isLoggedIn")) {
-      if(!nav) {
+      if (!nav) {
         return (
           <>
             <li className="p-4">
-              <Link to="/profile" className="hover:underline">Profile</Link>
+              <Link to="/profile" className="hover:underline">
+                Profile
+              </Link>
             </li>
           </>
-        )
+        );
       }
       return (
         <>
           <li className="py-8 px-4">
-            <Link to="/profile" className="hover:underline">Profile</Link>
+            <Link to="/profile" className="hover:underline">
+              Profile
+            </Link>
           </li>
         </>
-      )
-    } 
-  };
+      );
+    }
+  }
 
   return (
     <div className="flex justify-between items-center h-24  mx-auto px-6 text-[#2774AE] shadow-md fixed top-0 w-full bg-white">
@@ -59,14 +63,23 @@ const Navbar = () => {
       </h1>
       <ul className="hidden md:flex">
         <li className="py-8 px-4">
-          <Link to="/" className="hover:underline">Home</Link>
+          <Link to="/" className="hover:underline">
+            Home
+          </Link>
         </li>
         <li className="py-8 px-4">
-          <Link to="/contact" className="hover:underline">Contact</Link>
+          <Link to="/contact" className="hover:underline">
+            Contact
+          </Link>
         </li>
         <ToProfilePage />
         <li className="text-white p-4">
-          <button onClick={handleClick} className="p-4 bg-blue-500 rounded-full">{loggedInText}</button>
+          <button
+            onClick={handleClick}
+            className="p-4 bg-[#2774AE] rounded-2xl"
+          >
+            {loggedInText}
+          </button>
         </li>
       </ul>
       <div onClick={handleNav} className="block md:hidden">
@@ -84,14 +97,23 @@ const Navbar = () => {
         </h1>
         <ul className="uppercase p-4">
           <li className="p-4 border-b">
-            <Link to="/" className="hover:underline">Home</Link>
+            <Link to="/" className="hover:underline">
+              Home
+            </Link>
           </li>
           <li className="p-4 border-b">
-            <Link to="/contact" className="hover:underline">Contact</Link>
+            <Link to="/contact" className="hover:underline">
+              Contact
+            </Link>
           </li>
-            <ToProfilePage />
+          <ToProfilePage />
           <li className="p-4 border-b">
-            <button onClick={handleClick} className="uppercase hover:underline ">{loggedInText}</button>
+            <button
+              onClick={handleClick}
+              className="uppercase hover:underline "
+            >
+              {loggedInText}
+            </button>
           </li>
         </ul>
       </div>
