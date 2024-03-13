@@ -40,6 +40,8 @@ function Searchbar() {
     window.localStorage.setItem("startLocation", start);
     window.localStorage.setItem("endLocation", end);
 
+    const username = window.localStorage.getItem("email") ? window.localStorage.getItem("email") : "undefined";
+    console.log(username);
     const response = fetch("http://localhost:8000/request", {
       method: "POST",
       headers: {
@@ -49,6 +51,7 @@ function Searchbar() {
         startLocation: start,
         endLocation: end,
         time: date + time,
+        username: username,
       }),
     })
       .then((response) => response.json())
