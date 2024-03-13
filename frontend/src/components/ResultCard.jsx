@@ -30,13 +30,10 @@ function ResultCard(props) {
   };
 
   function GetCardContent() {
-    if (props.name === "New Scooter!!!") {
+    if (props.name === "New Scooter!") {
       return (
         <>
           <br />
-          <Typography gutterBottom variant="h5" component="div">
-            {props.name}
-          </Typography>
           <Typography variant="body" color="text.secondary">
             <b>Create a new ride!</b>
             <br />
