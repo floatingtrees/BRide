@@ -42,7 +42,7 @@ function ProfilePage() {
   function UserReservations() {
     return (
       <>
-        <div className="mx-auto  w-full rounded-2xl bg-white p-4 backdrop-blur-sm  md:p-8">
+        <div className="mx-auto w-full min-w-max rounded-2xl bg-white p-4 backdrop-blur-sm  md:p-8">
           <h1 className="py-8 text-4xl font-bold text-[#2774AE] dark:text-[#2774AE]">
             Reservations
           </h1>
