@@ -1,6 +1,10 @@
 import resend
+from dotenv import load_dotenv
+import os
 
-resend.api_key = "re_8Z6ZeVxK_NKqBgP68mWcAPXMS7Po55hzh"
+load_dotenv()
+
+resend.api_key = os.getenv('RESEND_KEY')
 
 
 def get_formatted_HTML_notif(username, from_location, to_location, leave_time):
@@ -16,7 +20,7 @@ def get_formatted_HTML_notif(username, from_location, to_location, leave_time):
         /* -------------------------------------
         GLOBAL RESETS
     ------------------------------------- */
-        
+
         body {
         font-family: Helvetica, sans-serif;
         -webkit-font-smoothing: antialiased;
@@ -25,14 +29,14 @@ def get_formatted_HTML_notif(username, from_location, to_location, leave_time):
         -ms-text-size-adjust: 100%;
         -webkit-text-size-adjust: 100%;
         }
-        
+
         table {
         border-collapse: separate;
         mso-table-lspace: 0pt;
         mso-table-rspace: 0pt;
         width: 100%;
         }
-        
+
         table td {
         font-family: Helvetica, sans-serif;
         font-size: 16px;
@@ -41,18 +45,18 @@ def get_formatted_HTML_notif(username, from_location, to_location, leave_time):
         /* -------------------------------------
         BODY & CONTAINER
     ------------------------------------- */
-        
+
         body {
         background-color: #f4f5f6;
         margin: 0;
         padding: 0;
         }
-        
+
         .body {
         background-color: #f4f5f6;
         width: 100%;
         }
-        
+
         .container {
         margin: 0 auto !important;
         max-width: 600px;
@@ -60,7 +64,7 @@ def get_formatted_HTML_notif(username, from_location, to_location, leave_time):
         padding-top: 24px;
         width: 600px;
         }
-        
+
         .content {
         box-sizing: border-box;
         display: block;
@@ -71,26 +75,26 @@ def get_formatted_HTML_notif(username, from_location, to_location, leave_time):
         /* -------------------------------------
         HEADER, FOOTER, MAIN
     ------------------------------------- */
-        
+
         .main {
         background: #ffffff;
         border: 1px solid #eaebed;
         border-radius: 16px;
         width: 100%;
         }
-        
+
         .wrapper {
         box-sizing: border-box;
         padding: 24px;
         }
-        
+
         .footer {
         clear: both;
         padding-top: 24px;
         text-align: center;
         width: 100%;
         }
-        
+
         .footer td,
         .footer p,
         .footer span,
@@ -102,15 +106,15 @@ def get_formatted_HTML_notif(username, from_location, to_location, leave_time):
         /* -------------------------------------
         TYPOGRAPHY
     ------------------------------------- */
-        
+
         p {
         font-family: Helvetica, sans-serif;
         font-size: 16px;
         font-weight: normal;
-        margin: 1rem; 
+        margin: 1rem;
         margin-bottom: 16px;
         }
-        
+
         a {
         color: #0867ec;
         text-decoration: underline;
@@ -119,42 +123,42 @@ def get_formatted_HTML_notif(username, from_location, to_location, leave_time):
         BUTTONS
     ------------------------------------- */
         .bride {
-            margin: 1rem; 
-            width: 100%; 
+            margin: 1rem;
+            width: 100%;
             font-size: 1.875rem;
-            line-height: 2.25rem; 
-            font-weight: 700; 
+            line-height: 2.25rem;
+            font-weight: 700;
             color: #2774AE;
-        } 
+        }
 
         .bear-gif {
-            margin: 1rem; 
+            margin: 1rem;
             width: 200px; /* Set the width */
             height: auto; /* Maintain aspect ratio */
             border-radius: 10px; /* Add rounded corners */
         }
 
         .btn {
-        margin: 1rem; 
+        margin: 1rem;
         box-sizing: border-box;
         min-width: 100% !important;
         width: 100%;
         }
-        
+
         .btn > tbody > tr > td {
         padding-bottom: 16px;
         }
-        
+
         .btn table {
         width: auto;
         }
-        
+
         .btn table td {
         background-color: #ffffff;
         border-radius: 4px;
         text-align: center;
         }
-        
+
         .btn a {
         background-color: #ffffff;
         border: solid 2px #0867ec;
@@ -170,17 +174,17 @@ def get_formatted_HTML_notif(username, from_location, to_location, leave_time):
         text-decoration: none;
         text-transform: capitalize;
         }
-        
+
         .btn-primary table td {
         background-color: #0867ec;
         }
-        
+
         .btn-primary a {
         background-color: #0867ec;
         border-color: #0867ec;
         color: #ffffff;
         }
-        
+
         @media all {
         .btn-primary table td:hover {
             background-color: #FFD100 !important;
@@ -190,48 +194,48 @@ def get_formatted_HTML_notif(username, from_location, to_location, leave_time):
             border-color: #FFD100 !important;
         }
         }
-        
+
         /* -------------------------------------
         OTHER STYLES THAT MIGHT BE USEFUL
     ------------------------------------- */
-        
+
         .last {
         margin-bottom: 0;
         }
-        
+
         .first {
         margin-top: 0;
         }
-        
+
         .align-center {
         text-align: center;
         }
-        
+
         .align-right {
         text-align: right;
         }
-        
+
         .align-left {
         text-align: left;
         }
-        
+
         .text-link {
         color: #0867ec !important;
         text-decoration: underline !important;
         }
-        
+
         .clear {
         clear: both;
         }
-        
+
         .mt0 {
         margin-top: 0;
         }
-        
+
         .mb0 {
         margin-bottom: 0;
         }
-        
+
         .preheader {
         color: transparent;
         display: none;
@@ -244,15 +248,15 @@ def get_formatted_HTML_notif(username, from_location, to_location, leave_time):
         visibility: hidden;
         width: 0;
         }
-        
+
         .powered-by a {
         text-decoration: none;
         }
-        
+
         /* -------------------------------------
         RESPONSIVE AND MOBILE FRIENDLY STYLES
     ------------------------------------- */
-        
+
         @media only screen and (max-width: 640px) {
         .main p,
         .main td,
@@ -288,7 +292,7 @@ def get_formatted_HTML_notif(username, from_location, to_location, leave_time):
         /* -------------------------------------
         PRESERVE THESE STYLES IN THE HEAD
     ------------------------------------- */
-        
+
         @media all {
         .ExternalClass {
             width: 100%;
@@ -376,7 +380,7 @@ def get_formatted_HTML_notif(username, from_location, to_location, leave_time):
                 </div>
 
                 <!-- END FOOTER -->
-                
+
     <!-- END CENTERED WHITE CONTAINER --></div>
             </td>
             <td>&nbsp;</td>
@@ -400,7 +404,7 @@ def get_formatted_HTML_contact(first_name, last_name, contents):
         /* -------------------------------------
         GLOBAL RESETS
     ------------------------------------- */
-        
+
         body {
         font-family: Helvetica, sans-serif;
         -webkit-font-smoothing: antialiased;
@@ -409,14 +413,14 @@ def get_formatted_HTML_contact(first_name, last_name, contents):
         -ms-text-size-adjust: 100%;
         -webkit-text-size-adjust: 100%;
         }
-        
+
         table {
         border-collapse: separate;
         mso-table-lspace: 0pt;
         mso-table-rspace: 0pt;
         width: 100%;
         }
-        
+
         table td {
         font-family: Helvetica, sans-serif;
         font-size: 16px;
@@ -425,18 +429,18 @@ def get_formatted_HTML_contact(first_name, last_name, contents):
         /* -------------------------------------
         BODY & CONTAINER
     ------------------------------------- */
-        
+
         body {
         background-color: #f4f5f6;
         margin: 0;
         padding: 0;
         }
-        
+
         .body {
         background-color: #f4f5f6;
         width: 100%;
         }
-        
+
         .container {
         margin: 0 auto !important;
         max-width: 600px;
@@ -444,7 +448,7 @@ def get_formatted_HTML_contact(first_name, last_name, contents):
         padding-top: 24px;
         width: 600px;
         }
-        
+
         .content {
         box-sizing: border-box;
         display: block;
@@ -455,26 +459,26 @@ def get_formatted_HTML_contact(first_name, last_name, contents):
         /* -------------------------------------
         HEADER, FOOTER, MAIN
     ------------------------------------- */
-        
+
         .main {
         background: #ffffff;
         border: 1px solid #eaebed;
         border-radius: 16px;
         width: 100%;
         }
-        
+
         .wrapper {
         box-sizing: border-box;
         padding: 24px;
         }
-        
+
         .footer {
         clear: both;
         padding-top: 24px;
         text-align: center;
         width: 100%;
         }
-        
+
         .footer td,
         .footer p,
         .footer span,
@@ -486,15 +490,15 @@ def get_formatted_HTML_contact(first_name, last_name, contents):
         /* -------------------------------------
         TYPOGRAPHY
     ------------------------------------- */
-        
+
         p {
         font-family: Helvetica, sans-serif;
         font-size: 16px;
         font-weight: normal;
-        margin: 1rem; 
+        margin: 1rem;
         margin-bottom: 16px;
         }
-        
+
         a {
         color: #0867ec;
         text-decoration: underline;
@@ -503,42 +507,42 @@ def get_formatted_HTML_contact(first_name, last_name, contents):
         BUTTONS
     ------------------------------------- */
         .bride {
-            margin: 1rem; 
-            width: 100%; 
+            margin: 1rem;
+            width: 100%;
             font-size: 1.875rem;
-            line-height: 2.25rem; 
-            font-weight: 700; 
+            line-height: 2.25rem;
+            font-weight: 700;
             color: #2774AE;
-        } 
+        }
 
         .bear-gif {
-            margin: 1rem; 
+            margin: 1rem;
             width: 200px; /* Set the width */
             height: auto; /* Maintain aspect ratio */
             border-radius: 10px; /* Add rounded corners */
         }
 
         .btn {
-        margin: 1rem; 
+        margin: 1rem;
         box-sizing: border-box;
         min-width: 100% !important;
         width: 100%;
         }
-        
+
         .btn > tbody > tr > td {
         padding-bottom: 16px;
         }
-        
+
         .btn table {
         width: auto;
         }
-        
+
         .btn table td {
         background-color: #ffffff;
         border-radius: 4px;
         text-align: center;
         }
-        
+
         .btn a {
         background-color: #ffffff;
         border: solid 2px #0867ec;
@@ -554,17 +558,17 @@ def get_formatted_HTML_contact(first_name, last_name, contents):
         text-decoration: none;
         text-transform: capitalize;
         }
-        
+
         .btn-primary table td {
         background-color: #0867ec;
         }
-        
+
         .btn-primary a {
         background-color: #0867ec;
         border-color: #0867ec;
         color: #ffffff;
         }
-        
+
         @media all {
         .btn-primary table td:hover {
             background-color: #FFD100 !important;
@@ -574,48 +578,48 @@ def get_formatted_HTML_contact(first_name, last_name, contents):
             border-color: #FFD100 !important;
         }
         }
-        
+
         /* -------------------------------------
         OTHER STYLES THAT MIGHT BE USEFUL
     ------------------------------------- */
-        
+
         .last {
         margin-bottom: 0;
         }
-        
+
         .first {
         margin-top: 0;
         }
-        
+
         .align-center {
         text-align: center;
         }
-        
+
         .align-right {
         text-align: right;
         }
-        
+
         .align-left {
         text-align: left;
         }
-        
+
         .text-link {
         color: #0867ec !important;
         text-decoration: underline !important;
         }
-        
+
         .clear {
         clear: both;
         }
-        
+
         .mt0 {
         margin-top: 0;
         }
-        
+
         .mb0 {
         margin-bottom: 0;
         }
-        
+
         .preheader {
         color: transparent;
         display: none;
@@ -628,15 +632,15 @@ def get_formatted_HTML_contact(first_name, last_name, contents):
         visibility: hidden;
         width: 0;
         }
-        
+
         .powered-by a {
         text-decoration: none;
         }
-        
+
         /* -------------------------------------
         RESPONSIVE AND MOBILE FRIENDLY STYLES
     ------------------------------------- */
-        
+
         @media only screen and (max-width: 640px) {
         .main p,
         .main td,
@@ -672,7 +676,7 @@ def get_formatted_HTML_contact(first_name, last_name, contents):
         /* -------------------------------------
         PRESERVE THESE STYLES IN THE HEAD
     ------------------------------------- */
-        
+
         @media all {
         .ExternalClass {
             width: 100%;
@@ -744,7 +748,7 @@ def get_formatted_HTML_contact(first_name, last_name, contents):
                 </div>
 
                 <!-- END FOOTER -->
-                
+
     <!-- END CENTERED WHITE CONTAINER --></div>
             </td>
             <td>&nbsp;</td>
@@ -762,6 +766,9 @@ def send_notif_email(username, user_email, from_location, to_location, leave_tim
     "to": user_email,
     "subject": "Your BRide at " + leave_time + " going to " + to_location + " is Ready!",
     "html": get_formatted_HTML_notif(username, from_location, to_location, leave_time)})
+
+
+send_notif_email("cock", "edwardsun12895@g.ucla.edu", "your mom's house", "egger's house", "4:20 PM")
 
 def send_contact_us_email(first_name, last_name, user_email, contents):
     r = resend.Emails.send({

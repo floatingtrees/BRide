@@ -5,6 +5,7 @@ import uvicorn
 import hashlib
 import time
 from pydantic import BaseModel
+from send_email import send_notif_email
 
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
@@ -147,6 +148,7 @@ def confirm_selection(data : BetterSearchRequest):
     time=data.time
     username=data.username
     processed_form = startLocation + 'ı' + endLocation + 'ı' + time
+    send_notif_email(username, username, startLocation, endLocation, time)
     with open("data/database.txt", mode = 'r') as file:
         all_forms = file.readlines()
     for form in all_forms:
@@ -178,6 +180,9 @@ def find_reservations_in_their_sleep(data: BaseUsername):
                 reservations.append(test)
     print(reservations)
     return reservations
+
+
+
 
 
 

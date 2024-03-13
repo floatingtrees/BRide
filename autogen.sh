@@ -1,12 +1,19 @@
 #!/bin/bash
 
 cd backend
+if [ -f ".env" ]; then
+	echo "Resend Key Found."
+else
+    echo "Enter the resend key"
+    read resend_key
+    echo RESEND_KEY="$resend_key"> .env
+fi
 python3 -m venv venv2
 source venv2/bin/activate
 pip3 install fastapi
 pip3 install resend
-
 pip3 install uvicorn
+pip3 install python-dotenv
 
 cd ../frontend
 npm install
@@ -19,6 +26,7 @@ else
 	mkdir data
 	cd data
 	touch database.txt
+	echo -e "\$%&!a@a\nBruin WalkıAtlantisı04/01/202409:30" > database.txt
 	touch Usernames.txt
 	echo a@a > Usernames.txt
 	touch Passwords.txt
