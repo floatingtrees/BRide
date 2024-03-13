@@ -24,7 +24,7 @@ function ProfilePage() {
   function DisplayReservation(props) {
     return (
       <>
-        <div className="mb-4 rounded-lg border-blue-500 border-opacity-50 border-opacity-50 bg-blue-100 p-4 text-lg shadow-lg">
+        <div className="mb-4 rounded-lg border-blue-500 border-opacity-50 bg-blue-100 p-4 text-lg shadow-lg">
           <b className="flex justify-center">Reservation {props.res}</b>
           <h1 className="flex justify-center">
             Destination:&ensp;<b>{props.dest}</b>
@@ -42,7 +42,7 @@ function ProfilePage() {
   function UserReservations() {
     return (
       <>
-        <div className="mx-auto  w-full rounded-2xl bg-white p-4 backdrop-blur-sm  md:p-8">
+        <div className="mx-auto w-full min-w-max rounded-2xl bg-white p-4 backdrop-blur-sm  md:p-8">
           <h1 className="py-8 text-4xl font-bold text-[#2774AE] dark:text-[#2774AE]">
             Reservations
           </h1>
@@ -114,13 +114,13 @@ function ProfilePage() {
 
   return loggedIn ? (
     <>
-      <Navbar />
       <div className="w-full px-4 py-32">
         <div className="sm:grid-col-1 mx-auto grid gap-48 px-48 md:grid-cols-2">
           <UserReservations />
           <UserProfile />
         </div>
       </div>
+      <Navbar />
       <Footer />
     </>
   ) : (

@@ -30,13 +30,10 @@ function ResultCard(props) {
   };
 
   function GetCardContent() {
-    if (props.name === "New Scooter!!!") {
+    if (props.name === "New Scooter!") {
       return (
         <>
           <br />
-          <Typography gutterBottom variant="h5" component="div">
-            {props.name}
-          </Typography>
           <Typography variant="body" color="text.secondary">
             <b>Create a new ride!</b>
             <br />
@@ -76,7 +73,7 @@ function ResultCard(props) {
       <Grid item xs={12} sm={4} ms={4} className="relative">
         <Link to="/select">
           <Card
-            sx={{ maxWidth: 345 }}
+            sx={{ maxWidth: 345, height: 425 }}
             style={{
               padding: "10xp",
               marginBottom: "30px",
@@ -86,9 +83,9 @@ function ResultCard(props) {
             <CardActionArea>
               <CardMedia
                 component="img"
-                height="140"
+                sx={{ maxHeight: 250 }}
                 image={props.img}
-                alt="green iguana"
+                alt="img"
               />
               <CardContent>
                 <GetCardContent />
