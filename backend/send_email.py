@@ -758,14 +758,14 @@ def get_formatted_HTML_contact(first_name, last_name, contents):
 
 def send_notif_email(username, user_email, from_location, to_location, leave_time):
     r = resend.Emails.send({
-    "from": "BRide@resend.dev",
+    "from": "BRide@brideucla.com",
     "to": user_email,
     "subject": "Your BRide at " + leave_time + " going to " + to_location + " is Ready!",
     "html": get_formatted_HTML_notif(username, from_location, to_location, leave_time)})
 
 def send_contact_us_email(first_name, last_name, user_email, contents):
     r = resend.Emails.send({
-    "from": "BRide@resend.dev",
+    "from": "BRide@brideucla.com",
     "to": "edwardsun12895@g.ucla.edu",
     "subject": first_name + " " + last_name + " contacted you!",
     "html": get_formatted_HTML_contact(first_name, last_name, contents)})
