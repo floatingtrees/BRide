@@ -48,7 +48,7 @@ function SearchResultPage() {
             style={{ marginTop: "-15px", marginLeft: "240px" }}
             columns={16}
           >
-            <ResultCard name="New Scooter!!!" img={default_img} />
+            <ResultCard name="New Scooter!" img={default_img} />
             <ResultCard
               name={window.localStorage.getItem(
                 "query_result_orderer_username",
