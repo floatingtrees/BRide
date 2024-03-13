@@ -28,7 +28,7 @@ const Last = () => {
             Hold on tight!
           </h1>
           <p className="" style={paragraphStyle}>
-            When a match is found, meet at your departure location when the time comes. Make sure you meet the person you matched with, and take the scooter ride to your destination.
+            When a match is found, meet at your departure location stated in the email notification when the time comes. Make sure you meet the person you matched with, and take the scooter ride to your destination.
           </p>
         </div>
       </div>
