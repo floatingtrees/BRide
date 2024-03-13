@@ -114,13 +114,13 @@ function ProfilePage() {
 
   return loggedIn ? (
     <>
-      <Navbar />
       <div className="w-full px-4 py-32">
         <div className="sm:grid-col-1 mx-auto grid gap-48 px-48 md:grid-cols-2">
           <UserReservations />
           <UserProfile />
         </div>
       </div>
+      <Navbar />
       <Footer />
     </>
   ) : (
