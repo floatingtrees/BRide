@@ -5,7 +5,7 @@ import uvicorn
 import hashlib
 import time
 from pydantic import BaseModel
-from send_email import send_notif_email
+from send_email import send_notif_email, send_contact_us_email
 
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
