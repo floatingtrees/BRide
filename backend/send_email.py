@@ -388,11 +388,10 @@ def get_formatted_HTML(username, from_location, to_location, leave_time):
     return html
 
 
-def send_email(username, from_location, to_location, leave_time):
+def send_email(username, user_email, from_location, to_location, leave_time):
     r = resend.Emails.send({
-    "from": "onboarding@resend.dev",
-    "to": "edwardsun12895@g.ucla.edu",
-    "subject": "Your BRide at " + leave_time + " is Ready!",
+    "from": "BRide@resend.dev",
+    "to": user_email,
+    "subject": "Your BRide at " + leave_time + " going to " + to_location + " is Ready!",
     "html": get_formatted_HTML(username, from_location, to_location, leave_time)})
 
-send_email("cock", "your mom's house", "egger's house", "4:20 PM")
