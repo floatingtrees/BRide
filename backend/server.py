@@ -91,11 +91,13 @@ def login(data : UsernamePassword):
     return {"message":"success"}
 
 @app.post('/request')
-def search(data : SearchRequest):
+def search(data : BetterSearchRequest):
     # send format for time must be in date:hour:minute
     startLocation=data.startLocation
     endLocation=data.endLocation
     time=data.time
+    username=data.username
+
     processed_form = startLocation + 'ı' + endLocation + 'ı' + time
     with open("data/database.txt", mode = 'r') as file:
         all_forms = file.readlines()
@@ -105,7 +107,7 @@ def search(data : SearchRequest):
     final_statement = []
     for i, form in enumerate(all_forms):
         if "$%&!" in form:
-            orderer_username = form[4:]
+            orderer_username = form[4:].replace('\n', '')
             continue
         form = form.replace('\n', '')
         print(form, processed_form)
@@ -120,9 +122,41 @@ def search(data : SearchRequest):
                 final_statement.append({"success" : str(matched), "startLocation" : selected_form[0],
                     "endLocation" : selected_form[1],
                     "time" : selected_form[2], "orderer_username" : orderer_username})
+
     if selected_form is None:
-        final_statement.append({"success" : str(matched)})
-    return final_statement
+        return {"success" : str(matched)}
+
+    if "@" not in username:
+        return final_statement
+
+    concats = []
+    destruction = []
+    final_solution = []
+    for i, form in enumerate(final_statement):
+        temp_file = form["startLocation"] + form["endLocation"] + form["time"]
+        if temp_file in concats:
+            if form.orderer_username == username:
+                destruction.append(concats.index(temp_file))
+        else:
+            concats.append(temp_file)
+
+    destruction.sort()
+    for i in reversed(destruction):
+        del concats[i]
+
+    actual_final_solution = []
+
+    for i, form in enumerate(final_statement):
+        temp_file = form["startLocation"] + form["endLocation"] + form["time"]
+        if temp_file in concats:
+            concats.remove(temp_file)
+        actual_final_solution.append(form)
+
+
+    assert(len(concats) == 0), "Concatenation doesn't work"
+
+
+    return actual_final_solution
 
 @app.post('/book/ride')
 def book_ride(data : BetterSearchRequest):
