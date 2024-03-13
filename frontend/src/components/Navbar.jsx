@@ -76,8 +76,8 @@ const Navbar = () => {
         <li className="text-white p-4">
           <button
             onClick={handleClick}
-            className="p-4 bg-[#2774AE] rounded-2xl"
-          >
+            className="p-4 bg-[#2774AE] rounded-xl"
+          > 
             {loggedInText}
           </button>
         </li>
