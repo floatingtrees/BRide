@@ -26,6 +26,7 @@ else
 	mkdir data
 	cd data
 	touch database.txt
+	echo -e "\$%&!a@a\nBruin WalkıAtlantisı04/01/202409:30" > database.txt
 	touch Usernames.txt
 	echo a@a > Usernames.txt
 	touch Passwords.txt
