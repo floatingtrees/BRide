@@ -1,7 +1,6 @@
 import { React, useState, useEffect } from "react";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import Typography from "@mui/material/Typography";
 import { cn } from "./utils/cn";
 
 function ProfilePage() {
@@ -25,7 +24,6 @@ function ProfilePage() {
   for (let i = 0; i < reservations.length; i++) {
     reservations[i].id = i+1;
   }
-  console.log(reservations[0]);
   function DisplayReservation({resv}) {
     return (
       <>
@@ -63,14 +61,10 @@ function ProfilePage() {
     );
   }
 
-  function getInfo(email, password) {}
-
   function UserProfile() {
     //find all reservations given the input query of username (password???)
     const email = window.localStorage.getItem("email");
     const password = window.localStorage.getItem("password");
-    const name = "Stanley Yelnets";
-    const info = getInfo(email, password);
 
     return (
       <>
@@ -121,13 +115,5 @@ function ProfilePage() {
     ""
   );
 }
-
-const LabelInputContainer = ({ children, className }) => {
-  return (
-    <div className={cn("flex w-full flex-col space-y-2", className)}>
-      {children}
-    </div>
-  );
-};
 
 export default ProfilePage;
