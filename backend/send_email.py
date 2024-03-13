@@ -349,7 +349,7 @@ def get_formatted_HTML_notif(username, from_location, to_location, leave_time):
                             <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                                 <tbody>
                                 <tr>
-                                    <td> <a href="http://localhost:5173/" target="_blank">Go Get My BRide!</a> </td>
+                                    <td> <a href="http://localhost:5173/profile" target="_blank">Go Get My BRide!</a> </td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -768,7 +768,7 @@ def send_notif_email(username, user_email, from_location, to_location, leave_tim
     "html": get_formatted_HTML_notif(username, from_location, to_location, leave_time)})
 
 
-send_notif_email("cock", "jonathantzhou@g.ucla.edu", "your mom's house", "egger's house", "4:20 PM")
+#send_notif_email("cock", "jonathantzhou@g.ucla.edu", "your mom's house", "egger's house", "4:20 PM")
 
 def send_contact_us_email(first_name, last_name, user_email, contents):
     r = resend.Emails.send({

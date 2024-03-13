@@ -136,6 +136,7 @@ def book_ride(data : BetterSearchRequest):
     try:
         with open("data/database.txt", mode = 'a') as file:
             file.write('\n$%&!' + username + '\n' + processed_form)
+            send_notif_email(username, username, startLocation, endLocation, time)
             return {"success" : "True"}
     except:
         return {"success" : "False"}
@@ -149,6 +150,7 @@ def confirm_selection(data : BetterSearchRequest):
     username=data.username
     processed_form = startLocation + 'ı' + endLocation + 'ı' + time
     send_notif_email(username, username, startLocation, endLocation, time)
+    print(repr("jonathantzhou@g.ucla.edu"), repr(username), "jonathantzhou@g.ucla.edu" == username)
     with open("data/database.txt", mode = 'r') as file:
         all_forms = file.readlines()
     for form in all_forms:
