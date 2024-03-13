@@ -19,7 +19,7 @@ const HowTo = () => {
 
   return (
     <div className="w-full bg-[#8BB8E8] px-4 py-16 text-white">
-      <div className="mx-auto grid md:grid-cols-2">
+      <div className="mx-auto grid md:grid-cols-2 gap-8">
         <div className="flex flex-col justify-center pl-12">
           <p
             className=" font-bold uppercase text-[#e5e5e5]"
@@ -40,7 +40,11 @@ const HowTo = () => {
             notify you as soon as a match is found.
           </p>
         </div>
-        <img className="mx-auto my-4 w-[500px]" src={use} alt="use"></img>
+        <img
+          className="mx-auto my-4 md:w-[500px] rounded-2xl shadow-xl"
+          src={use}
+          alt="use"
+        ></img>
       </div>
     </div>
   );
