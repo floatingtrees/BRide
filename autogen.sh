@@ -1,13 +1,10 @@
 #!/bin/bash
 
 cd backend
-if [ -f ".env" ]; then
-	echo "Resend Key Found."
-else
-    echo "Enter the resend key"
-    read resend_key
-    echo RESEND_KEY="$resend_key"> .env
-fi
+echo "Enter the resend key"
+read resend_key
+echo RESEND_KEY="$resend_key"> .env
+
 python3 -m venv venv2
 source venv2/bin/activate
 pip3 install fastapi
