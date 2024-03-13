@@ -41,26 +41,28 @@ function SearchResultPage() {
     <>
       <div className="pt-24">
         <Searchbar />
-        <Container maxWidth="lg">
-          <Grid
-            container
-            spacing={5}
-            style={{ marginTop: "-15px" }}
-            columns={16}
-          >
-            <ResultCard name="New Scooter!" img={default_img} />
-            <ResultCard
-              name={window.localStorage.getItem(
-                "query_result_orderer_username",
-              )}
-              start={start}
-              end={end}
-              date={date}
-              time={time}
-              img={img}
-            />
-          </Grid>
-        </Container>
+        <div className="flex pt-20">
+          <Container maxWidth="lg">
+            <Grid
+              container
+              spacing={5}
+              style={{ marginTop: "20px" }}
+              columns={16}
+            >
+              <ResultCard name="New Scooter!" img={default_img} />
+              <ResultCard
+                name={window.localStorage.getItem(
+                  "query_result_orderer_username",
+                )}
+                start={start}
+                end={end}
+                date={date}
+                time={time}
+                img={img}
+              />
+            </Grid>
+          </Container>
+        </div>
       </div>
       <Navbar />
     </>
