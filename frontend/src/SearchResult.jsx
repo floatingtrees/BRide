@@ -14,7 +14,7 @@ function SearchResultPage() {
     window.localStorage.getItem("query_result_time").slice(0, -5),
   );
   const [time, setTime] = useState(
-    window.localStorage.getItem("query_result_time").slice(0, -5),
+    window.localStorage.getItem("query_result_time").slice(-5),
   );
   const [username, setUsername] = useState(
     window.localStorage.getItem("query_result_orderer_username"),

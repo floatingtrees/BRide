@@ -67,7 +67,9 @@ function ResultCard(props) {
       </>
     );
   }
-
+  if(props.name === "undefined") {
+    return null;
+  }
   return (
     <>
       <Grid item xs={12} sm={4} ms={4} className="relative">
