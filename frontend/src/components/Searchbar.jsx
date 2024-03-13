@@ -92,7 +92,7 @@ function Searchbar() {
         <form className="rounded bg-white" onSubmit={handleSubmit}>
           <div className="flex flex-col md:flex-row md:space-x-2">
             <LabelInputContainer>
-              <Label htmlFor="firstname">Arrival Location</Label>
+              <Label htmlFor="firstname">Departure Location</Label>
               <Input
                 class="focus:shadow-outline w-full appearance-none rounded border px-3 py-2 leading-tight text-gray-700 shadow focus:outline-none"
                 id="start"
@@ -102,7 +102,7 @@ function Searchbar() {
               />
             </LabelInputContainer>
             <LabelInputContainer>
-              <Label htmlFor="firstname">Departure Location</Label>
+              <Label htmlFor="firstname">Arrival Location</Label>
               <Input
                 class="focus:shadow-outline w-full appearance-none rounded border px-3 py-2 leading-tight text-gray-700 shadow focus:outline-none"
                 id="end"
