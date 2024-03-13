@@ -768,7 +768,7 @@ def send_notif_email(username, user_email, from_location, to_location, leave_tim
     "html": get_formatted_HTML_notif(username, from_location, to_location, leave_time)})
 
 
-#send_notif_email("cock", "jonathantzhou@g.ucla.edu", "your mom's house", "egger's house", "4:20 PM")
+send_notif_email("cock", "jonathantzhou@g.ucla.edu", "your mom's house", "egger's house", "4:20 PM")
 
 def send_contact_us_email(first_name, last_name, user_email, contents):
     r = resend.Emails.send({
