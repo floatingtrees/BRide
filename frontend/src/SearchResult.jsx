@@ -1,5 +1,4 @@
 import * as React from "react";
-import img from "./assets/Card.jpg";
 import default_img from "./assets/default_card.jpg";
 import Navbar from "./components/Navbar";
 import { useLocation, Link } from "react-router-dom";
@@ -58,7 +57,6 @@ function SearchResultPage() {
                 end={end}
                 date={date}
                 time={time}
-                img={img}
               />
             </Grid>
           </Container>

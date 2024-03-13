@@ -1,4 +1,4 @@
-import * as React from "react";
+import { useState, useEffect } from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
@@ -6,8 +6,28 @@ import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
 import { useLocation, Link } from "react-router-dom";
 import { Grid } from "@mui/material";
+import img1 from "../assets/img1.jpeg";
+import img2 from "../assets/img2.jpeg";
+import img3 from "../assets/img3.jpeg";
+import img4 from "../assets/img4.jpeg";
+import img5 from "../assets/img5.jpeg";
+import img6 from "../assets/img6.jpeg";
+import img7 from "../assets/img7.jpeg";
+import img8 from "../assets/img8.jpeg";
+import img9 from "../assets/img9.jpeg";
+import img10 from "../assets/img10.jpeg";
 
 function ResultCard(props) {
+  const images = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10];
+  const [currentImageIndex, setCurrentImageIndex] = useState(
+    Math.floor(Math.random() * images.length),
+  );
+  const changeImage = () => {
+    const randomNumber = Math.floor(Math.random() * images.length);
+    setCurrentImageIndex(randomNumber);
+  };
+  useEffect(() => changeImage(), []);
+
   const bookRide = async (e) => {
     e.preventDefault();
     const response = await fetch("http://localhost:8000/book/ride", {
@@ -67,7 +87,7 @@ function ResultCard(props) {
       </>
     );
   }
-  if(props.name === "undefined") {
+  if (props.name === "undefined") {
     return null;
   }
   return (
@@ -86,7 +106,7 @@ function ResultCard(props) {
               <CardMedia
                 component="img"
                 sx={{ maxHeight: 250 }}
-                image={props.img}
+                image={props.img ? props.img : images[currentImageIndex]}
                 alt="img"
               />
               <CardContent>
