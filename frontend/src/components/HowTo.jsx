@@ -3,25 +3,28 @@ import use from "../assets/Use.gif";
 
 const HowTo = () => {
   const paragraphStyle = {
-    caretColor: 'transparent',
+    caretColor: "transparent",
     maxWidth: "70%",
     fontSize: "1rem",
     lineHeight: "1.6",
     marginLeft: "5rem",
   };
   const headingStyle = {
-    caretColor: 'transparent',
+    caretColor: "transparent",
     fontSize: "2.5rem",
     fontWeight: "bold",
     marginBottom: "1rem",
     marginLeft: "5rem",
   };
-  
+
   return (
-    <div className="w-full bg-[#8BB8E8] px-4 py-16">
+    <div className="w-full bg-[#8BB8E8] px-4 py-16 text-white">
       <div className="mx-auto grid md:grid-cols-2">
         <div className="flex flex-col justify-center pl-12">
-          <p className=" font-bold uppercase" style={paragraphStyle}>
+          <p
+            className=" font-bold uppercase text-[#e5e5e5]"
+            style={paragraphStyle}
+          >
             How to look for a match?
           </p>
           <h1
