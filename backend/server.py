@@ -102,6 +102,7 @@ def search(data : SearchRequest):
     matched = False
     selected_form = None
     orderer_username = None
+    final_statement = []
     for i, form in enumerate(all_forms):
         if "$%&!" in form:
             orderer_username = form[4:]
@@ -116,14 +117,12 @@ def search(data : SearchRequest):
             if abs(form_time - processed_form_time) <= 30:
                 matched = True
                 selected_form = form
-                break
-
-    if selected_form is not None:
-        selected_form = selected_form.split('ı')
-        return {"success" : str(matched), "startLocation" : selected_form[0], "endLocation" : selected_form[1],
-            "time" : selected_form[2], "orderer_username" : orderer_username}
-    else:
-        return {"success" : str(matched)}
+                final_statement.append({"success" : str(matched), "startLocation" : selected_form[0],
+                    "endLocation" : selected_form[1],
+                    "time" : selected_form[2], "orderer_username" : orderer_username})
+    if selected_form is None:
+        final_statement.append({"success" : str(matched)})
+    return final_statement
 
 @app.post('/book/ride')
 def book_ride(data : BetterSearchRequest):
