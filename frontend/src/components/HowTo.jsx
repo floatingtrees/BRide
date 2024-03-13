@@ -41,7 +41,7 @@ const HowTo = () => {
           </p>
         </div>
         <img
-          className="mx-auto my-4 md:w-[500px] rounded-2xl shadow-xl"
+          className="mx-auto my-4 w-[500px] rounded-2xl shadow-xl"
           src={use}
           alt="use"
         ></img>
