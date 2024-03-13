@@ -116,7 +116,7 @@ def search(data : SearchRequest):
             processed_form_time = int(processed_form[-5] + processed_form[-4] + processed_form[-2] + processed_form[-1])
             if abs(form_time - processed_form_time) <= 30:
                 matched = True
-                selected_form = form
+                selected_form = form.split('ı')
                 final_statement.append({"success" : str(matched), "startLocation" : selected_form[0],
                     "endLocation" : selected_form[1],
                     "time" : selected_form[2], "orderer_username" : orderer_username})

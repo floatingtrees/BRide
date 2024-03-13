@@ -17,8 +17,10 @@ import img8 from "../assets/img8.jpeg";
 import img9 from "../assets/img9.jpeg";
 import img10 from "../assets/img10.jpeg";
 
-function ResultCard(props) {
+function ResultCard({scooter}) {
   const images = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10];
+
+
   const [currentImageIndex, setCurrentImageIndex] = useState(
     Math.floor(Math.random() * images.length),
   );
@@ -28,29 +30,8 @@ function ResultCard(props) {
   };
   useEffect(() => changeImage(), []);
 
-  const bookRide = async (e) => {
-    e.preventDefault();
-    const response = await fetch("http://localhost:8000/book/ride", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        startLocation: start,
-        endLocation: end,
-        time: date + time,
-      }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.success === "True") {
-          console.log(data.success);
-        }
-      });
-  };
-
   function GetCardContent() {
-    if (props.name === "New Scooter!") {
+    if (scooter.orderer_username === "New Scooter!") {
       return (
         <>
           <br />
@@ -67,27 +48,28 @@ function ResultCard(props) {
     return (
       <>
         <Typography gutterBottom variant="h5" component="div">
-          {props.name}
+          {scooter.orderer_username}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          Join {props.name}'s Ride!
+          Join {scooter.orderer_username.replace(/\n/g, '')}'s Ride!
           <br />
           <b> Start: </b>
-          {props.start}
+          {scooter.startLocation}
           <br />
           <b> Destination: </b>
-          {props.end}
+          {scooter.endLocation}
           <br />
           <b> Date: </b>
-          {props.date}
+          {scooter.time.slice(0,-5)}
           <br />
           <b>Time: </b>
-          {props.time}
+          {scooter.time.slice(-5)}
         </Typography>
       </>
     );
   }
-  if (props.name === "undefined") {
+  if (!scooter.orderer_username || scooter.orderer_username === "undefined" ||
+      scooter.orderer_username.replace(/\n/g, '') == window.localStorage.getItem("email")) {
     return null;
   }
   return (
@@ -106,7 +88,7 @@ function ResultCard(props) {
               <CardMedia
                 component="img"
                 sx={{ maxHeight: 250 }}
-                image={props.img ? props.img : images[currentImageIndex]}
+                image={scooter.img ? scooter.img : images[currentImageIndex]}
                 alt="img"
               />
               <CardContent>

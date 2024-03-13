@@ -10,24 +10,9 @@ function Searchbar() {
   const [time, setTime] = useState("");
   const [start, setStart] = useState("");
   const [end, setEnd] = useState("");
-  const [username, setUsername] = useState("");
-  const dataToSend = { start: "", end: "", date: "", time: "" };
   const navigate = useNavigate();
 
-  function retrieveData() {
-    //if we have multiple queries returned; for later
-    // dataToSend.startLocation=data.startLocation;
-    // dataToSend.endLocation=data.endLocation;
-    // dataToSend.time=data.time.substring(data.time.length - 5);
-    // dataToSend.date=data.time.substring(0,data.time.length-5);
-
-    dataToSend.start = start;
-    dataToSend.end = end;
-    dataToSend.time = time;
-    dataToSend.date = date;
-  }
-
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     const timeRegex = /^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/;
@@ -55,7 +40,7 @@ function Searchbar() {
     window.localStorage.setItem("startLocation", start);
     window.localStorage.setItem("endLocation", end);
 
-    const response = await fetch("http://localhost:8000/request", {
+    const response = fetch("http://localhost:8000/request", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -68,21 +53,8 @@ function Searchbar() {
     })
       .then((response) => response.json())
       .then((data) => {
-        if (data.success === "True") {
-          retrieveData(data);
-        }
-        window.localStorage.setItem("query_result_success", data.success);
-        window.localStorage.setItem("query_result_start", data.startLocation);
-        window.localStorage.setItem("query_result_end", data.endLocation);
-        window.localStorage.setItem("query_result_time", data.time);
-        window.localStorage.setItem(
-          "query_result_orderer_username",
-          data.orderer_username,
-        );
-        console.log(window.localStorage.getItem("query_result_time"));
-        navigate("/search");
-        window.location.reload();
-        navigate("/search");
+        const scooter_queries = data;
+        navigate("/search", {state:{scooter_queries}});
       });
   };
 
