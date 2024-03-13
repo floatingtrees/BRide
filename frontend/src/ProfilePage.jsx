@@ -22,32 +22,39 @@ function ProfilePage() {
   }, []);
 
   for (let i = 0; i < reservations.length; i++) {
-    reservations[i].id = i+1;
+    reservations[i].id = i + 1;
   }
-  function DisplayReservation({resv}) {
+  function DisplayReservation({ resv }) {
     return (
       <>
-        <div className="mb-4 rounded-lg border-blue-500 border-opacity-50 bg-blue-100 p-4 text-lg shadow-lg">
-          <b className="flex justify-center">Reservation {resv.id}</b>
-          <h1 className="flex justify-center">
-            Start:&ensp;<b>{resv.startLocation}</b>
-          </h1>
-          <h1 className="flex justify-center">
-            Destination:&ensp;<b>{resv.endLocation}</b>
-          </h1>
-          <h1 className="flex justify-center">
-            Date:&ensp;<b>{resv.time.replace(/\n/g, '').slice(0,-5)}</b>
-          </h1>
-          <h1 className="flex justify-center">
-            Time:&ensp;<b>{resv.time.replace(/\n/g, '').slice(-5)}</b>
-          </h1>
+        <div className="mb-4 rounded-xl border-opacity-50 bg-[#2774AE] p-4 text-lg shadow-sm duration-300 hover:-translate-y-2 hover:shadow-2xl">
+          <div className="bg-blue-100 rounded-xl p-4">
+            <b className="flex justify-center">Reservation {resv.id}</b>
+            <h1 className="flex justify-left pl-16 ">
+              <b>Start:&ensp;</b>
+              {resv.startLocation}
+            </h1>
+            <h1 className="flex justify-left pl-16 ">
+              <b>Destination:&ensp;</b>
+              {resv.endLocation}
+            </h1>
+            <h1 className="flex justify-left pl-16 ">
+              <b>Date:&ensp;</b>
+              {resv.time.replace(/\n/g, "").slice(0, -5)}
+            </h1>
+            <h1 className="flex justify-left pl-16 ">
+              <b>Time:&ensp;</b>
+              {resv.time.replace(/\n/g, "").slice(-5)}
+            </h1>
+          </div>
         </div>
       </>
     );
   }
   function UserReservations() {
-
-    const listReservations = reservations.map((resv) => <DisplayReservation key={resv.id} resv={resv} />);
+    const listReservations = reservations.map((resv) => (
+      <DisplayReservation key={resv.id} resv={resv} />
+    ));
 
     return (
       <>
