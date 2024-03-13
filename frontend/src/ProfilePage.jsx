@@ -24,7 +24,7 @@ function ProfilePage() {
   function DisplayReservation(props) {
     return (
       <>
-        <div className="mb-4 rounded-lg border-blue-500 border-opacity-50 border-opacity-50 bg-blue-100 p-4 text-lg shadow-lg">
+        <div className="mb-4 rounded-lg border-blue-500 border-opacity-50 bg-blue-100 p-4 text-lg shadow-lg">
           <b className="flex justify-center">Reservation {props.res}</b>
           <h1 className="flex justify-center">
             Destination:&ensp;<b>{props.dest}</b>

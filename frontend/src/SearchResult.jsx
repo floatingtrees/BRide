@@ -45,7 +45,7 @@ function SearchResultPage() {
           <Grid
             container
             spacing={5}
-            style={{ marginTop: "-15px", marginLeft: "240px" }}
+            style={{ marginTop: "-15px" }}
             columns={16}
           >
             <ResultCard name="New Scooter!" img={default_img} />
