@@ -1,5 +1,5 @@
 import React from "react";
-import last from "../assets/Last.gif";
+import last from "../assets/dowg.gif";
 
 const Last = () => {
   const paragraphStyle = {
@@ -25,7 +25,7 @@ const Last = () => {
           <h1 className="md:text-4xl sm:text-3xl text-2xl fond-bold py-2"
           style={headingStyle}
           >
-            Hold on tight
+            Hold on tight!
           </h1>
           <p className="" style={paragraphStyle}>
             When a match is found, meet at your departure location when the time comes. Make sure you meet the person you matched with, and take the scooter ride to your destination.
