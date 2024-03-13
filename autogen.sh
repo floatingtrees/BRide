@@ -1,13 +1,15 @@
 #!/bin/bash
 
 cd backend
+echo "Enter the resend key"
+read resend_key
+echo RESEND_KEY="$resend_key"> .env
 python3 -m venv venv2
 source venv2/bin/activate
 pip3 install fastapi
 pip3 install resend
-echo RESEND_KEY="re_8Z6ZeVxK_NKqBgP68mWcAPXMS7Po55hzh"> .env
 pip3 install uvicorn
-pip3 install dotenv
+pip3 install python-dotenv
 
 cd ../frontend
 npm install
