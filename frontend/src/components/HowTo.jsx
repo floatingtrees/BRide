@@ -18,13 +18,13 @@ const HowTo = () => {
   };
 
   return (
-    <div className="w-full bg-[#8BB8E8] px-4 py-16 text-white">
+    <div className="w-full py-16 px-4">
       <div className="mx-auto grid md:grid-cols-2 gap-8">
         <div className="flex flex-col justify-center pl-12">
           <div className="flex flex-col justify-center">
             <p
-              className=" font-bold uppercase text-[#e5e5e5]"
-              style={paragraphStyle}
+              className=" font-bold uppercase text-[#757575]"
+              style={paragraphStyle} 
             >
               How to look for a match?
             </p>

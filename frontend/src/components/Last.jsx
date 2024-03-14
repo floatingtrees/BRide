@@ -17,7 +17,7 @@ const Last = () => {
     marginBottom: "1rem",
   };
   return (
-    <div className="w-full py-16 px-4">
+    <div className="w-full bg-[#8BB8E8] px-4 py-16 text-black">
       <div className="mx-auto grid md:grid-cols-2 gap-8">
         <img
           className="w-[500px] mx-auto my-4 rounded-2xl shadow-xl"
