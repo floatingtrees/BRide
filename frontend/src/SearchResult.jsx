@@ -6,12 +6,12 @@ import { Grid } from "@mui/material";
 import Container from "@mui/material/Container";
 import Searchbar from "./components/Searchbar";
 import ResultCard from "./components/ResultCard";
+import Footer from "./components/Footer";
 import { useEffect, useState } from "react";
 
 function SearchResultPage() {
   const location = useLocation();
   const { scooter_queries } = location.state;
-
   for (let i = 0; i < scooter_queries.length; i++) {
     scooter_queries[i].id = i + 1;
   }
@@ -42,6 +42,7 @@ function SearchResultPage() {
         </div>
       </div>
       <Navbar />
+      <Footer />
     </>
   );
 }
