@@ -135,7 +135,7 @@ def search(data : BetterSearchRequest):
     for i, form in enumerate(final_statement):
         temp_file = form["startLocation"] + form["endLocation"] + form["time"]
         if temp_file in concats:
-            if form.orderer_username == username:
+            if form["orderer_username"] == username:
                 destruction.append(concats.index(temp_file))
         else:
             concats.append(temp_file)
@@ -154,7 +154,6 @@ def search(data : BetterSearchRequest):
 
 
     assert(len(concats) == 0), "Concatenation doesn't work"
-
 
     return actual_final_solution
 

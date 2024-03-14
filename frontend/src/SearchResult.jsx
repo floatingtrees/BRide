@@ -10,18 +10,18 @@ import { useEffect, useState } from "react";
 
 function SearchResultPage() {
   const location = useLocation();
-  const {scooter_queries} = location.state;
-
-  console.log(scooter_queries[1]);
+  const { scooter_queries } = location.state;
 
   for (let i = 0; i < scooter_queries.length; i++) {
-    scooter_queries[i].id = i+1;
+    scooter_queries[i].id = i + 1;
   }
-  const default_scooter = {orderer_username:"New Scooter!", img:default_img}
+  const default_scooter = {
+    orderer_username: "New Scooter!",
+    img: default_img,
+  };
   const DisplayScooters = scooter_queries.map((scooter) => (
-      <ResultCard key={scooter.id} scooter={scooter} />
-    ));
-
+    <ResultCard key={scooter.id} scooter={scooter} />
+  ));
 
   return (
     <>
