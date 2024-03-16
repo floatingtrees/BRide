@@ -1,0 +1,10 @@
+.DS_Store
+.idea
+*.log
+tmp/
+frontend/node_modules
+venv/
+venv2/
+data/
+*.env
+__pycache__/
